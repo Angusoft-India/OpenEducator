@@ -1,0 +1,29 @@
+﻿@{ 
+    ViewBag.Title = "All Courses";
+    ViewBag.ContainerStyle = "padding: 0;";
+}
+
+<row center>
+    <column w="10">
+        <h1 text-center>All Courses</h1>
+    </column>
+</row>
+<row>
+    <column width="2" m-width="0" l-width="1"></column>
+    <column width="6" m-width="10" l-width="8">
+        <stack>
+            @foreach(Course c in Course.GetAll())
+            {
+            <card horizontal s-stack>
+                <img src="@c.SnapshotUrl"/>
+                <information>
+                    <name><a href="~/Course/@c.ID">@c.Name</a></name>
+                    <description limit="250">@c.Description</description>
+                    <author>@c.Author</author>
+                </information>
+            </card>
+            }
+        </stack>        
+    </column>
+    <column width="2" m-width="0" l-width="1"></column>
+</row>

@@ -1,0 +1,7 @@
+﻿LIST OF THINGS TO COMPLETE
+
+-------- NOW -------------
+- Create course maker
+------ PLANNED -----------
+- Create SQL Database that tracks Courses and Instructors
+- Setup authentication
