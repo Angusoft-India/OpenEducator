@@ -26,7 +26,7 @@ namespace OpenEducator.App_Start
         private static Dictionary<string, Menu> PredefinedMenus = new Dictionary<string, Menu>() {
             #region Hardcoded Menus
             ["TopBar"] = new Menu() { Links = new Dictionary<string, string>() {
-                ["Dashboard"] = "/Dashboard", ["Courses"] = "/Course"
+                ["Dashboard"] = "/Dashboard", ["Courses"] = "/Course", ["Test"] = "/Dashboard/Test"
             }}
             #endregion
         };

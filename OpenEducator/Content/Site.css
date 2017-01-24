@@ -1,3 +1,39 @@
-﻿*[pad] {
-    padding: 20px;
+﻿div.is-padded {
+    padding: 24px;
+}
+
+.card-footer-item {
+    transition: all 0.6s ease; 
+}
+.card-footer-item:hover {
+    background-color: #00d1b2;
+    color: white;
+}
+
+nav.nav {
+    background-color: #00d1b2;
+}
+a.nav-item {
+    color: white;
+}
+
+a.nav-title {
+    font-size: 1.4em;
+    background-color: white;
+    color: #00d1b2;
+
+    transition: all 0.6s ease;
+}
+a.nav-title:hover {
+    font-size: 1.4em;
+    color: white;
+    background-color: #00d1b2;
+}
+
+
+@media only screen and (max-width: 768px){
+    .stack-on-mobile {
+        flex-direction: column;
+        align-items: center;
+    }
 }

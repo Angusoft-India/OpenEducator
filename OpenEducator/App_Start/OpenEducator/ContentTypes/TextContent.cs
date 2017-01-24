@@ -6,16 +6,16 @@ using System.Web;
 namespace OpenEducator.ContentTypes
 {
     public class TextContent: Content {
-        string text;
 
-        public TextContent(string content) {
-            text = content;
+        public string Text { get; set; } = "Lorem Ipsum";
+
+        public TextContent() { }
+        public TextContent(string text) {
+            Text = text;
         }
 
-        public override string HTML {
-            get {
-                return $@"<p>{text}</p>";
-            }
+        public override string Render() {
+            return $@"<p>{Text}</p>";   
         }
     }
 }

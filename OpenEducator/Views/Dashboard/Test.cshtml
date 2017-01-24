@@ -1,0 +1,176 @@
+﻿@using OpenEducator;
+@using OpenEducator.ContentTypes;
+@{
+    ViewBag.Title = "Test";
+}
+
+<h1>Playground</h1>
+@{ 
+    #region Create Course Test
+    Course cs = new Course() {
+        Name = "Introduction to the Theory of Computation",
+        Description = "Compuational Science is to programming as telescopes are to astronomy. Journey into the theoretical aspects of software engineering.",
+        ID = new Random(DateTime.Now.Second).Next(200000, int.MaxValue),
+        Author = "University of Aryan",
+        YoutubeVideoID = "KVvO4mPoZiA",
+        SnapshotUrl = @"http://www.placehold.it/400x400",
+
+        Chapters = new List<Chapter>() {
+            new Chapter() {
+                Name = "Regular Languages",
+                Description = "What is this about?",
+                Topics = new List<Topic>() {
+                    new Topic() {
+                        Name = "Finite Automata",
+                        Description = "What is this about?",
+                        Pages = new List<OpenEducator.Page>() {
+                            new OpenEducator.Page() {
+                                Title = "Formal definiton of a finite automatron",
+                                Contents = new List<Content>() {
+                                    new TextContent("Lorem Ipsum Dorset Amy"),
+                                    new YoutubeVideoContent("IQWqEbFdoLI")
+                                }
+                            },
+                            new OpenEducator.Page() {
+                                Title = "Examples of finite automata",
+                                Contents = new List<Content>() {
+                                    new TextContent("Lorem Ipsum Dorset Amy"),
+                                    new TextContent("Lorem Dorset Ipsum Amy")
+                                }
+                            },
+                            new OpenEducator.Page() {
+                                Title = "Formal definiton of computation",
+                                Contents = new List<Content>() {
+                                    new TextContent("Lorem Ipsum Dorset Amy"),
+                                    new TextContent("Lorem Dorset Ipsum Amy")
+                                }
+                            },
+                            new OpenEducator.Page() {
+                                Title = "Designing finite automata",
+                                Contents = new List<Content>() {
+                                    new TextContent("Lorem Ipsum Dorset Amy"),
+                                    new TextContent("Lorem Dorset Ipsum Amy")
+                                }
+                            }
+                        }
+                    },
+                    new Topic() {
+                        Name = "Nondeterminism",
+                        Description = "What is this about?",
+                        Pages = new List<OpenEducator.Page>() {
+                            new OpenEducator.Page() {
+                                Title = "Formal deﬁnition of a nondeterministic ﬁnite automaton ",
+                                Contents = new List<Content>() {
+                                    new TextContent("Lorem Ipsum Dorset Amy"),
+                                    new TextContent("Lorem Dorset Ipsum Amy")
+                                }
+                            },
+                            new OpenEducator.Page() {
+                                Title = "Equivalence of NFAs and DFAs ",
+                                Contents = new List<Content>() {
+                                    new TextContent("Lorem Ipsum Dorset Amy"),
+                                    new TextContent("Lorem Dorset Ipsum Amy")
+                                }
+                            },
+                            new OpenEducator.Page() {
+                                Title = "Closure under the regular operations",
+                                Contents = new List<Content>() {
+                                    new TextContent("Lorem Ipsum Dorset Amy"),
+                                    new TextContent("Lorem Dorset Ipsum Amy")
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            new Chapter() {
+                Name = "Context-Free Languages ",
+                Description = "What is this about?",
+                Topics = new List<Topic>() {
+                    new Topic() {
+                        Name = "Context-Free Grammars",
+                        Description = "What is this about?",
+                        Pages = new List<OpenEducator.Page>() {
+                            new OpenEducator.Page() {
+                                Title = "Formal deﬁnition of a context-free grammar",
+                                Contents = new List<Content>() {
+                                    new TextContent("Lorem Ipsum Dorset Amy"),
+                                    new TextContent("Lorem Dorset Ipsum Amy")
+                                }
+                            },
+                            new OpenEducator.Page() {
+                                Title = "Examples of context-free grammars",
+                                Contents = new List<Content>() {
+                                    new TextContent("Lorem Ipsum Dorset Amy"),
+                                    new TextContent("Lorem Dorset Ipsum Amy")
+                                }
+                            },
+                            new OpenEducator.Page() {
+                                Title = "Designing context-free grammars",
+                                Contents = new List<Content>() {
+                                    new TextContent("Lorem Ipsum Dorset Amy"),
+                                    new TextContent("Lorem Dorset Ipsum Amy")
+                                }
+                            },
+                            new OpenEducator.Page() {
+                                Title = "Ambiguity",
+                                Contents = new List<Content>() {
+                                    new TextContent("Lorem Ipsum Dorset Amy"),
+                                    new TextContent("Lorem Dorset Ipsum Amy")
+                                }
+                            }
+                        }
+                    },
+                    new Topic() {
+                        Name = "Pushdown Automata ",
+                        Description = "What is this about?",
+                        Pages = new List<OpenEducator.Page>() {
+                            new OpenEducator.Page() {
+                                Title = "Formal deﬁnition of a pushdown automaton",
+                                Contents = new List<Content>() {
+                                    new TextContent("Lorem Ipsum Dorset Amy"),
+                                    new TextContent("Lorem Dorset Ipsum Amy")
+                                }
+                            },
+                            new OpenEducator.Page() {
+                                Title = "Examples of pushdown automata",
+                                Contents = new List<Content>() {
+                                    new TextContent("Lorem Ipsum Dorset Amy"),
+                                    new TextContent("Lorem Dorset Ipsum Amy")
+                                }
+                            },
+                            new OpenEducator.Page() {
+                                Title = "Equivalence with context-free grammars",
+                                Contents = new List<Content>() {
+                                    new TextContent("Lorem Ipsum Dorset Amy"),
+                                    new TextContent("Lorem Dorset Ipsum Amy")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        Instructors = new List<Instructor>() {
+            new Instructor() {
+                Name = "Aryan Mann",
+                ID = 1337
+            },
+            new Instructor() {
+                Name = "Michael Sipser",
+                ID = 1230
+            }
+        }
+    };
+
+    cs.Save();
+    #endregion
+
+    #region Get Course Test 
+
+    #endregion
+}
+
+<ul>
+
+</ul>

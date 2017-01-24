@@ -12,18 +12,11 @@ namespace OpenEducator.Controllers
         public ActionResult Index() {
             return View();
         }
-
-        // GET: NewCourse
-        public ActionResult NewCourse() {
-            return View();
-        }
-
-        // GET: ShowCourse
-        public ActionResult ShowCourse() {
-            ViewBag.ID = RouteData.Values["id"] ?? "xxx";
-
-            return View();
-        }
         
+        // GET: Course/{name}
+        public ActionResult ViewCourse() {
+            ViewBag.CourseName = RouteData.Values["name"] as string;
+            return View();
+        }
     }
 }

@@ -5,11 +5,15 @@ using System.Web;
 
 namespace OpenEducator {
     public abstract class Content {     
+
         public string ContentType {
             get {
                 return GetType().FullName;
             }
         }
-        public abstract string HTML { get; }
+        public Content() { }
+
+        public abstract string Render();
+
     }
 }

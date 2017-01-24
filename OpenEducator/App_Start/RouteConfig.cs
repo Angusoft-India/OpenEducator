@@ -14,16 +14,16 @@ namespace OpenEducator
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Create Course",
-                url: "Course/New",
-                defaults: new { controller = "Course", action = "NewCourse" }
+                name: "Course List",
+                url: "Course",
+                defaults: new { controller = "Course", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "Specific Route",
+                url: "Course/{name}",
+                defaults: new { controller = "Course", action = "ViewCourse" }
             );
 
-            routes.MapRoute(
-                name: "Display Course",
-                url: "Course/{id}",
-                defaults: new { controller = "Course", action = "ShowCourse", id = UrlParameter.Optional }
-            );
 
             routes.MapRoute(
                 name: "Default",

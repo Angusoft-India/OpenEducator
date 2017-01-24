@@ -9,19 +9,27 @@
 </head>
 <body>
     
-    <navigation>
-        <brand>@DataProvider.GetString("SiteTitle")</brand>
-        @foreach(var kvp in DataProvider.GetMenu(ViewBag.Menu ?? "TopBar").Links) {
-            <a href="@kvp.Value">@kvp.Key</a>
-        }
-    </navigation>
+    <nav class="nav has-shadow">
+        <div class="container">
+            <div class="nav-left">
+                <a class="nav-item nav-title" style="font-weight: bold;">@DataProvider.GetString("SiteTitle")</a>
+                @foreach(var kvp in DataProvider.GetMenu("TopBar").Links) {
+                    <a href="@kvp.Value" class="nav-item is-tab is-hidden-mobile">@kvp.Key</a>
+                }
+            </div>
 
-    <div class="container" style="@ViewBag.ContainerStyle">
+            <div class="nav-right nav-menu">
+                <a class="nav-item is-tab" href="/Dashboard/Test">Playground</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container is-padded" style="@ViewBag.ContainerStyle">
         @RenderBody()
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/broken")
+    @Scripts.Render("~/bundles/init")
     @RenderSection("scripts", required: false)
 </body>
 </html>
