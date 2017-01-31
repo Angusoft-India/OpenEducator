@@ -192,6 +192,10 @@
     <Compile Include="App_Start\DataProvider.cs" />
     <Compile Include="App_Start\OpenEducator\Chapter.cs" />
     <Compile Include="App_Start\OpenEducator\Content.cs" />
+    <Compile Include="App_Start\OpenEducator\ContentTypes\ConstructedHtmlContent.cs" />
+    <Compile Include="App_Start\OpenEducator\ContentTypes\ImageContent.cs" />
+    <Compile Include="App_Start\OpenEducator\ContentTypes\ListContent.cs" />
+    <Compile Include="App_Start\OpenEducator\ContentTypes\RawHtmlContent.cs" />
     <Compile Include="App_Start\OpenEducator\ContentTypes\TextContent.cs" />
     <Compile Include="App_Start\OpenEducator\Instructor.cs" />
     <Compile Include="App_Start\OpenEducator\Course.cs" />
@@ -200,6 +204,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\MakerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -208,11 +213,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\OpenEducator\ContentTypes\YoutubeVideoContent.cs" />
-    <Content Include="Content\bulma.css" />
+    <Content Include="Content\contentStyles.css" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\foundation.css" />
+    <Content Include="Content\foundation.min.css" />
     <Content Include="Content\site.css" />
+    <Content Include="Scripts\foundation.js" />
+    <Content Include="Scripts\foundation.min.js" />
     <Content Include="Scripts\modernizr.js" />
     <Content Include="Content\normalize.css" />
     <Content Include="favicon.ico" />
@@ -222,6 +231,7 @@
     </Content>
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\what-input.js" />
     <Content Include="TODO.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -260,6 +270,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Course\ViewCourse.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Course\ViewTopic.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Course\ViewChapter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Maker\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Maker\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

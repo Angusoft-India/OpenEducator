@@ -1,7 +1,51 @@
-﻿@{
-    ViewBag.Title = "ViewCourse";
-    Course c = Course.GetFromName(ViewBag.CourseName);
+﻿@{ 
+    Dictionary<string, int> Vals = ViewBag.Vals;
+
+    int ID = Vals["ID"];
+    int Chapter = Vals["Chapter"];
+    int Topic = Vals["Topic"];
+    int Page = Vals["Page"];
+
+    Course crs;
+    crs = Course.GetFromID(ID);
 }
 
-<h2>@c.Name</h2>
+@if(crs == null) {
+    ViewBag.Title = "Error";
+    ViewBag.Classes = "padded";
+    <h1>Course does not exist.</h1>
+    return;
+} else {
+    ViewBag.Title = crs.Name;
+}
 
+<!-- COURSE EXISTS DO STUFF -->
+<div class="row">
+    <div class="columns small-12">
+        <ul class="vertical accordion-menu menu" data-accordion-menu>
+            @foreach(Chapter ch in crs.Chapters) {
+                <li>
+                    <a href="#" end="@crs.Chapters.IndexOf(ch)">@ch.Name</a>
+                    <ul class="menu vertical sublevel-1">
+                        @foreach(Topic top in ch.Topics) {
+                            <li>
+                                <a class="subitem" href="#" end="@crs.Chapters.IndexOf(ch)/@ch.Topics.IndexOf(top)">@ch.Name</a>
+                                <ul class="menu vertical sublevel-2">
+                                    @foreach(OpenEducator.Page pag in top.Pages) {
+                                        <li>
+                                            <a class="subitem" end="@crs.Chapters.IndexOf(ch)/@ch.Topics.IndexOf(top)/@top.Pages.IndexOf(pag)" href="#">@pag.Title</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="columns small-12 double-padded s-padded">
+        adas
+    </div>
+</div>

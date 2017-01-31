@@ -8,27 +8,33 @@
     @Styles.Render("~/Content/css")
 </head>
 <body>
+    @Scripts.Render("~/bundles/jquery")
     
-    <nav class="nav has-shadow">
-        <div class="container">
-            <div class="nav-left">
-                <a class="nav-item nav-title" style="font-weight: bold;">@DataProvider.GetString("SiteTitle")</a>
-                @foreach(var kvp in DataProvider.GetMenu("TopBar").Links) {
-                    <a href="@kvp.Value" class="nav-item is-tab is-hidden-mobile">@kvp.Key</a>
-                }
-            </div>
+    <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+        <button class="menu-icon" type="button" data-toggle></button>
+        <div class="title-bar-title">@DataProvider.GetString("SiteTitle")</div>
+    </div>
 
-            <div class="nav-right nav-menu">
-                <a class="nav-item is-tab" href="/Dashboard/Test">Playground</a>
-            </div>
+    <div class="top-bar" id="example-menu">
+        <div class="top-bar-right hide-for-small-only">
+            <ul class="menu">
+                <li class="menu-text">@DataProvider.GetString("SiteTitle")</li>
+            </ul>
         </div>
-    </nav>
+        <div class="top-bar-left">
+            <ul class=" medium-horizontal vertical dropdown menu" data-responsive-menu="accordion medium-dropdown">
+                @foreach(var kvp in DataProvider.GetMenu("TopBar").Links) {
+                    <li role="menuitem" class="dark"><a href="@kvp.Value">@kvp.Key</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+
     
-    <div class="container is-padded" style="@ViewBag.ContainerStyle">
+    <div class="container @ViewBag.Classes" style="@ViewBag.ContainerStyle">
         @RenderBody()
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/init")
     @RenderSection("scripts", required: false)
 </body>

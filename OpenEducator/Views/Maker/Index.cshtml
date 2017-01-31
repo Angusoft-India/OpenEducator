@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Maker";
+    Course cs = new Course();
+
+    bool? success = null;
+}
+<div class="row">
+    <div class="columns medium-8 medium-offset-2 large-6 large-offset-3 small-12 double-padded s-padded">
+        @{ string errorMessage = ""; }
+
+        @if(Request.RequestType == "POST") {
+            string cName = Request.Form["name"].ToString();
+            string cID = Request.Form["id"].ToString();
+            string cAuthor = Request.Form["author"].ToString();
+
+
+            int cIDn = 0;
+
+            if(string.IsNullOrWhiteSpace(cName) || string.IsNullOrWhiteSpace(cID) || string.IsNullOrWhiteSpace(cAuthor) || !int.TryParse(cID, out cIDn)) {
+                errorMessage = "Invalid input data";
+                goto Error;
+            }
+            if(cIDn <= 10000) {
+                errorMessage = "ID should be greater than 10000";
+                goto Error;
+            }
+            if(Course.Exists(cIDn)) {
+                errorMessage = $"Course with ID {cIDn} already exists!";
+                goto Error;
+            }
+
+            success = true;
+
+            cs.Name = cName;
+            cs.ID = cIDn;
+            cs.Author = cAuthor;
+
+            cs.Save();
+
+            <div class="callout success">
+                <h5>Successful!</h5>
+                <p>Course @cs.Name created!</p>
+            </div>
+        }
+
+
+        @{
+            Error:
+            ;
+            if(success != null) {
+                if(success == false) {
+                    <div class="callout alert">
+                        <h5>Unsuccessful!</h5>
+                        <p>@errorMessage</p>
+                    </div>
+                }
+            }
+        }
+
+        <fieldset class="fieldset">
+            <legend style="background-color: whitesmoke; font-weight: bold; font-size: 1.8em;">Initialization Properties</legend>
+            <form method="post" action="/Maker">
+                <label>
+                    Name
+                    <input type="text" name="name" placeholder="Introduction To Stuff" />
+                </label>
+                <label>
+                    ID
+                    <input type="number" name="id" min="10000" step="1" placeholder="10250" />
+                </label>
+                <label>
+                    Author
+                    <input type="text" name="author" placeholder="University of Aryan" />
+                </label>
+                <input type="submit" value="Create" class="button success" name="createCourse" style="color: white;" />
+            </form>
+        </fieldset>
+    </div>
+</div>

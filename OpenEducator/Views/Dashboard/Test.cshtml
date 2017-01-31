@@ -4,173 +4,69 @@
     ViewBag.Title = "Test";
 }
 
-<h1>Playground</h1>
-@{ 
-    #region Create Course Test
-    Course cs = new Course() {
-        Name = "Introduction to the Theory of Computation",
-        Description = "Compuational Science is to programming as telescopes are to astronomy. Journey into the theoretical aspects of software engineering.",
-        ID = new Random(DateTime.Now.Second).Next(200000, int.MaxValue),
-        Author = "University of Aryan",
-        YoutubeVideoID = "KVvO4mPoZiA",
-        SnapshotUrl = @"http://www.placehold.it/400x400",
+<style>
+    body {
+        background-color: #424242 !important;
+    }
+</style>
 
+@{
+
+    List<Content> conts = new List<Content>();
+    for(int i = 1; i < 11; i++) {
+        conts.Add(new TextContent($"Number {i}", TextContent.TextType.A) {
+            Open = @"href=""http://www.aryanmann.com/"""
+        });
+    }
+
+    Course cs = new Course() {
+        Name = "Learning Web Development Through Wordpress",
+        ID = 13370,
+        Author = "University of Aryan",
+        Description = "Learn the basics of web development through WordPress by utilizing HTML, CSS, JavaScript, PHP.",
+        Instructors = new List<Instructor>() {
+            new Instructor(){ Name = "Aryan Mann", ID = 1337 }
+        },
+        SnapshotUrl = @"https://www.smashingmagazine.com/wp-content/uploads/2013/03/Wordpress-start-image.jpg",
+        YoutubeVideoID = "G6xWZoCFmOw",
+        Contents = new List<Content>(){
+            new TextContent("WordPress is a free and open-source content management system (CMS) based on PHP and MySQL. WordPress is installed on a web server that is either part of an Internet hosting service or a network host in its own right. The first case may be a service like WordPress.com, for example, and the second case could be a computer running the software package WordPress.org."),
+            new TextContent("We will be focusing on creating our own self-hosted WordPress service using a software called XAMPP which emulates web servers.")
+        },
         Chapters = new List<Chapter>() {
             new Chapter() {
-                Name = "Regular Languages",
-                Description = "What is this about?",
+                Name = "The Setup",
+                Description = "We setup our development environment by installing XAMPP, VSCode, and WordPress",
+                Contents = new List<Content>() {
+
+                },
                 Topics = new List<Topic>() {
-                    new Topic() {
-                        Name = "Finite Automata",
-                        Description = "What is this about?",
-                        Pages = new List<OpenEducator.Page>() {
-                            new OpenEducator.Page() {
-                                Title = "Formal definiton of a finite automatron",
-                                Contents = new List<Content>() {
-                                    new TextContent("Lorem Ipsum Dorset Amy"),
-                                    new YoutubeVideoContent("IQWqEbFdoLI")
-                                }
-                            },
-                            new OpenEducator.Page() {
-                                Title = "Examples of finite automata",
-                                Contents = new List<Content>() {
-                                    new TextContent("Lorem Ipsum Dorset Amy"),
-                                    new TextContent("Lorem Dorset Ipsum Amy")
-                                }
-                            },
-                            new OpenEducator.Page() {
-                                Title = "Formal definiton of computation",
-                                Contents = new List<Content>() {
-                                    new TextContent("Lorem Ipsum Dorset Amy"),
-                                    new TextContent("Lorem Dorset Ipsum Amy")
-                                }
-                            },
-                            new OpenEducator.Page() {
-                                Title = "Designing finite automata",
-                                Contents = new List<Content>() {
-                                    new TextContent("Lorem Ipsum Dorset Amy"),
-                                    new TextContent("Lorem Dorset Ipsum Amy")
-                                }
-                            }
-                        }
-                    },
-                    new Topic() {
-                        Name = "Nondeterminism",
-                        Description = "What is this about?",
-                        Pages = new List<OpenEducator.Page>() {
-                            new OpenEducator.Page() {
-                                Title = "Formal deﬁnition of a nondeterministic ﬁnite automaton ",
-                                Contents = new List<Content>() {
-                                    new TextContent("Lorem Ipsum Dorset Amy"),
-                                    new TextContent("Lorem Dorset Ipsum Amy")
-                                }
-                            },
-                            new OpenEducator.Page() {
-                                Title = "Equivalence of NFAs and DFAs ",
-                                Contents = new List<Content>() {
-                                    new TextContent("Lorem Ipsum Dorset Amy"),
-                                    new TextContent("Lorem Dorset Ipsum Amy")
-                                }
-                            },
-                            new OpenEducator.Page() {
-                                Title = "Closure under the regular operations",
-                                Contents = new List<Content>() {
-                                    new TextContent("Lorem Ipsum Dorset Amy"),
-                                    new TextContent("Lorem Dorset Ipsum Amy")
-                                }
-                            }
-                        }
-                    }
+
                 }
-            },
-            new Chapter() {
-                Name = "Context-Free Languages ",
-                Description = "What is this about?",
-                Topics = new List<Topic>() {
-                    new Topic() {
-                        Name = "Context-Free Grammars",
-                        Description = "What is this about?",
-                        Pages = new List<OpenEducator.Page>() {
-                            new OpenEducator.Page() {
-                                Title = "Formal deﬁnition of a context-free grammar",
-                                Contents = new List<Content>() {
-                                    new TextContent("Lorem Ipsum Dorset Amy"),
-                                    new TextContent("Lorem Dorset Ipsum Amy")
-                                }
-                            },
-                            new OpenEducator.Page() {
-                                Title = "Examples of context-free grammars",
-                                Contents = new List<Content>() {
-                                    new TextContent("Lorem Ipsum Dorset Amy"),
-                                    new TextContent("Lorem Dorset Ipsum Amy")
-                                }
-                            },
-                            new OpenEducator.Page() {
-                                Title = "Designing context-free grammars",
-                                Contents = new List<Content>() {
-                                    new TextContent("Lorem Ipsum Dorset Amy"),
-                                    new TextContent("Lorem Dorset Ipsum Amy")
-                                }
-                            },
-                            new OpenEducator.Page() {
-                                Title = "Ambiguity",
-                                Contents = new List<Content>() {
-                                    new TextContent("Lorem Ipsum Dorset Amy"),
-                                    new TextContent("Lorem Dorset Ipsum Amy")
-                                }
-                            }
-                        }
-                    },
-                    new Topic() {
-                        Name = "Pushdown Automata ",
-                        Description = "What is this about?",
-                        Pages = new List<OpenEducator.Page>() {
-                            new OpenEducator.Page() {
-                                Title = "Formal deﬁnition of a pushdown automaton",
-                                Contents = new List<Content>() {
-                                    new TextContent("Lorem Ipsum Dorset Amy"),
-                                    new TextContent("Lorem Dorset Ipsum Amy")
-                                }
-                            },
-                            new OpenEducator.Page() {
-                                Title = "Examples of pushdown automata",
-                                Contents = new List<Content>() {
-                                    new TextContent("Lorem Ipsum Dorset Amy"),
-                                    new TextContent("Lorem Dorset Ipsum Amy")
-                                }
-                            },
-                            new OpenEducator.Page() {
-                                Title = "Equivalence with context-free grammars",
-                                Contents = new List<Content>() {
-                                    new TextContent("Lorem Ipsum Dorset Amy"),
-                                    new TextContent("Lorem Dorset Ipsum Amy")
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        Instructors = new List<Instructor>() {
-            new Instructor() {
-                Name = "Aryan Mann",
-                ID = 1337
-            },
-            new Instructor() {
-                Name = "Michael Sipser",
-                ID = 1230
             }
         }
     };
 
     cs.Save();
-    #endregion
-
-    #region Get Course Test 
-
-    #endregion
 }
 
-<ul>
+<div class="row" style="margin-top: 2em;">
+    <div class="medium-8 medium-offset-2 double-padded" style="background-color: white;">
+        <fieldset class="fieldset" style="margin: 0;">
+            <legend>Course Introduction</legend>            
+            @{ 
+                YoutubeVideoContent yvc = new YoutubeVideoContent(cs.YoutubeVideoID) {
+                    Style = "width: 100%; min-height: 350px; margin-bottom: 1em;"
+                };
+            }
+            
+            @Html.Raw(yvc.Render())
 
-</ul>
+            <br/>
+
+            @foreach(Content c in cs.Contents) {
+                @Html.Raw(c.Render())
+            }
+        </fieldset>
+    </div>
+</div>

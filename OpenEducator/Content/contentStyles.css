@@ -1,0 +1,24 @@
+﻿/* General */
+.container .row:nth-child(n+1) .oe-container {
+    background-color: #d4d3d3;
+}
+.container .row:nth-child(n+2) .oe-container {
+    background-color: #e6e6e6;
+}
+
+/* TextContent */
+p.TextContent-Text {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 0;   
+}
+.oe-container .oe-row:first-child .oe-column p.TextContent-Text {
+    padding-top: 0;
+    margin-bottom: 0;
+}
+
+/* YoutubeVideoContent */
+iframe.YoutubeVideoFrame {
+    border: 0;
+    box-shadow: 0;
+}

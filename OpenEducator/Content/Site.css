@@ -1,39 +1,129 @@
-﻿div.is-padded {
-    padding: 24px;
+﻿/* CUSTOMIZATION */
+body {
+    background-color: #f5f5f5;
 }
 
-.card-footer-item {
-    transition: all 0.6s ease; 
+iframe {
+    max-width: 100%;    
 }
-.card-footer-item:hover {
-    background-color: #00d1b2;
+
+.oe-container {
+    background-color: #e6e6e6;
+}
+
+.full {
+    width: 100% !important;
+}
+
+/* HELPER START */
+.padded {
+    padding: 1em;
+}
+.double-padded {
+    padding: 2em;
+}
+.left-padded {
+    padding: 0;
+    padding-left: 1em;
+}
+
+*[debug] {
+    background-color: #4d5158;
+    color: white !important;
+}
+
+.columns.padded {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.unpadded {
+    padding: 0;
+}
+.unstyled {
+    background-color: #e6e6e6 !important;
+    color: black !important;
+}
+.unstyled:before {
+    content: none !important;
+}
+
+/* CHAPTER TOPIC PAGE LIST */
+ul.ctp-list {
+    list-style-type: none;
+    background-color: #2ba6cb;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid black;
+}
+ul.ctp-list li, ul.ctp-list li a {
     color: white;
 }
-
-nav.nav {
-    background-color: #00d1b2;
+ul.ctp-list li a {
+    padding-left: 0.4em;
 }
-a.nav-item {
-    color: white;
-}
-
-a.nav-title {
-    font-size: 1.4em;
+ul.ctp-list li:hover, ul.ctp-list li.active {
     background-color: white;
-    color: #00d1b2;
-
-    transition: all 0.6s ease;
 }
-a.nav-title:hover {
-    font-size: 1.4em;
+ul.ctp-list li:hover a, ul.ctp-list li.active a {
+    color: #2ba6cb;
+}
+ul.ctp-list li a:before {
+    font-family: FontAwesome;
+    content: '\f061';
+    padding-right: 0.4em;
+}
+
+.bare {
+    padding: 0;
+    margin: 0;
+}
+
+.inverted {
+    background-color: black;
     color: white;
-    background-color: #00d1b2;
 }
 
+/* HELPER END */
 
-@media only screen and (max-width: 768px){
-    .stack-on-mobile {
-        flex-direction: column;
-        align-items: center;
+/* NAVIGATION BAR START */
+.top-bar {
+    padding: 0;
+}
+li.menu-text {
+    cursor: default;
+}
+li[role=menuitem].dark {
+    transition: all 0.4s ease;
+}
+li[role=menuitem].dark a {
+    color: white;
+    box-shadow: 0 0 0 0;
+    transition: all 0.4s ease;
+}
+li[role=menuitem].dark:hover {
+    background-color: white;
+}
+li[role=menuitem].dark:hover a {
+    color: #2ba6cb;
+}
+
+/* IMAGE WITH OVERLAY */
+div.image-holder {
+    position: relative;
+    background-size: cover;
+    height: 400px;
+    width: 100%;
+    z-index: -1;
+}
+
+    div.image-holder .image-overlay {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: white;
+        padding: 0.4em;
+        background-color: rgba(35,36,37,0.4);
+        margin: 0;
     }
-}

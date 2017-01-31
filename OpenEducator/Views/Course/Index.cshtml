@@ -3,47 +3,14 @@
     List<Course> courses = Course.GetAll();
 }
 
-<h1 class="title has-text-centered" style="font-size: 4.5em;">Courses</h1>
-
-@foreach(Course c in courses) {
-    <div class="card">
-        <header class="card-header" style="background-color: #00d1b2;">
-            <p class="card-header-title" style="font-size: 2em; color: white;"><i class="fa fa-book fa" style="padding-right: 0.4em;"></i>@c.Name</p>
-            <a class="card-header-icon">
-                <span class="icon">
-                    <i class="fa fa-angle-down"></i>
-                </span>
-            </a>
-        </header>
-        <div class="card-content" style="padding: 1em;">
-            <article class="media stack-on-mobile">
-                <figure class="media-left">
-                    <iframe style="max-width: 100%;" width="400" height="225" src="https://www.youtube.com/embed/@c.YoutubeVideoID?modestbranding=1" frameborder="0"></iframe>
-                </figure>
-                <div class="media-content">
-                    <div class="content" style="padding: 1em;">
-                    <p style="margin-bottom: 2px;">                        
-                        @c.Description <br/><br />
-                        <strong>ID: </strong> @c.ID <br />
-                        <strong>Author: </strong> @c.Author <br />
-                        <strong>Instructors :-</strong>
-                        <ul style="padding-top: 0; margin-top: 0;">
-                            @foreach(Instructor i in c.Instructors) {
-                                <li class="panel-list"><a href="/Instructor/@i.ID">@i.Name</a></li>
-                            }
-                        </ul>
-                    </p>
-                    </div>
-                </div>
-            </article>
-        </div>
-        @{ 
-            string link = c.Name.Replace(" ", "");
+<h1 class="title text-center" style="font-size: 4em;">Courses</h1>
+<div class="row" style="margin-top: 0.5em;">
+    <div class="medium-8 medium-offset-2 double-padded" style="background-color: white;">        
+        <ul class="menu">
+        @foreach(Course c in courses) {
+            <li><i class="fa fa-arrow-right" style="display: inline; vertical-align: baseline;"></i><a href="/Course/@c.ID" style="font-size: 1.6em; display: inline; vertical-align: sub;">@c.Name</a></li>    
         }
-        <footer class="card-footer">
-            <a class="card-footer-item" href="/Course/@link">View</a>
-            <a class="card-footer-item" href="#">Download</a>
-        </footer>
+        </ul>
     </div>
-}
+</div>
 

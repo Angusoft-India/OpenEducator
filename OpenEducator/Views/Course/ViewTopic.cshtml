@@ -1,0 +1,62 @@
+﻿@{
+    Dictionary<string, int> Vals = ViewBag.Vals;
+
+    int ID = Vals["ID"];
+    int Chapter = Vals["Chapter"];
+    int Topic = Vals["Topic"];
+    int Page = Vals["Page"];
+
+    Course crs;
+    crs = Course.GetFromID(ID);
+
+    Topic currentTopic = crs.Chapters[Chapter].Topics[Topic];
+
+    ViewBag.Title = "Error";
+}
+
+@if(crs == null) {
+    <h1>Course does not exist.</h1>
+    return;
+} 
+
+@if(Chapter > crs.Chapters.Count - 1) {
+    <h1>Invalid Chapter</h1>
+    return;
+}
+
+@if(Topic > crs.Chapters[Chapter].Topics.Count - 1) {
+    <h1>Invalid Topic</h1>
+    return;
+}
+
+@{ 
+    ViewBag.Title = crs.Name;
+    string baseUrl = $@"/Course/{crs.ID}";
+}
+
+<div class="row">
+    <div class="small-12 medium-4 columns">
+        <p class="bare inverted text-center">Chapters</p>
+        <ul class="ctp-list">
+            @foreach(Chapter c in crs.Chapters) {
+                <li @{ if(c == crs.Chapters[Chapter]) { @Html.Raw("class=\"active\"") } }><a href="@baseUrl/@crs.Chapters.IndexOf(c)">@c.Name</a></li>
+            }
+        </ul>
+    </div>
+    <div class="small-12 medium-4 columns" style="border-left: 1px solid black; border-right: 1px solid black;">
+        <p class="bare inverted text-center">Topics</p>
+        <ul class="ctp-list">
+            @foreach(Topic t in crs.Chapters[Chapter].Topics) {
+                <li @{ if(t == crs.Chapters[Chapter].Topics[Topic]) { @Html.Raw("class=\"active\"") } }><a href="@baseUrl/@Chapter/@crs.Chapters[Chapter].Topics.IndexOf(t)">@t.Name</a></li>
+            }
+        </ul>
+    </div>
+    <div class="small-12 medium-4 columns">
+        <p class="bare inverted text-center">Pages</p>
+        <ul class="ctp-list">
+            @foreach(OpenEducator.Page p in crs.Chapters[Chapter].Topics[Topic].Pages) {
+                <li @{ if(p == crs.Chapters[Chapter].Topics[Topic].Pages[Page]) { @Html.Raw("class=\"active\"") } }><a href="baseUrl/@Chapter/@Topic/@crs.Chapters[Chapter].Topics[Topic].Pages.IndexOf(p)">@p.Title</a></li>
+            }
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    string urlID = ViewBag.ID;
+
+    int cID = 0;
+    if(!int.TryParse(urlID, out cID)) {
+        <div class="double-padded s-padded">
+            <h2>Invalid ID</h2>
+        </div>
+        return;
+    }
+
+    if(!Course.Exists(cID)) {
+        <div class="double-padded s-padded">
+            <h2>Course with ID @cID does not exist.</h2>
+        </div>
+        return;
+    }
+
+    Course cs = Course.GetFromID(cID);
+    string csJson = cs.JsonString();
+
+    var dict = Content.AllContentTypeProperties();
+
+    Console.WriteLine(dict);
+
+    ViewBag.Title = "Edit " + cs.Name;
+}
+<script>
+    var course;
+    var ctprop;
+
+    $(function () {
+        LoadCourse();
+    });
+
+    function LoadCourse() {
+        course = JSON.parse('@Html.Raw(cs.EncodedJsonString())');
+        CreateContentTypeHash();
+    }
+
+    function CreateContentTypeHash() {
+
+    }
+
+    function UpdateCourse() {
+
+        course.Description = $('#description').val();
+        course.SnapshotUrl = $('#snapshoturl').val();
+        course.YoutubeVideoID = $('#youtubevideoid').val();
+        
+    }
+
+    function NewCTProperties() {
+        var typeName = $('#newContentSelect').val();
+    }
+
+</script>
+
+<p id="test">@Content.AllContentTypeProperties()</p>
+
+<div class="row" style="margin-top: 40px;">
+    <div class="columns medium-8 medium-offset-2 small-12 double-padded s-padded" style="background-color: white;">
+        <h1 class="text-center" style="font-weight: bold;">@cs.Name</h1>
+        
+        <fieldset class="fieldset">
+            <legend>Immutable Properties</legend>
+            <label>Name<input type="text" value="@cs.Name" disabled /></label>
+            <label>ID<input type="number" value="@cs.ID" disabled /></label>
+            <label>Author<input type="text" value="@cs.Author" disabled /></label>
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend>Mutable Properties</legend>
+            <label>Description<textarea id="description"></textarea></label>
+            <label>Snapshot URL<input type="text" id="snapshoturl" /></label>
+            <label>Youtube Video ID<input type="text" id="youtubevideoid" maxlength="11" /></label>
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend>Contents</legend>
+            <ul class="menu vertical" id="contents">
+                <li>
+                    <fieldset class="fieldset" style="background-color: whitesmoke;">
+                        <legend style="background-color: inherit;">New</legend>
+                        <ul class="menu vertical" id="contents">
+                            <li id="newContent">
+                                <label>
+                                    Type
+                                    <select id="newContentSelect" onchange="NewCTProperties()">
+                                        @foreach(Type t in Content.AvailableContentTypes()) {
+                                            <option value="@t.FullName">@t.Name</option>
+                                        }
+                                    </select>
+                                </label>
+
+                                <fieldset class="is-hidden" id="newPropHolder">
+                                    <legend>Properties</legend>
+                                    <ul class="menu vertical" id="propMenu">
+                                        
+                                    </ul>
+                                </fieldset>
+                            </li>
+                        </ul>
+                    </fieldset>
+                </li>
+            </ul>
+        </fieldset>
+
+        <button onclick="UpdateCourse()" id="submitChanges" class="button success" style="color: white; width: 100%;">Confirm</button>
+    </div>
+</div>
