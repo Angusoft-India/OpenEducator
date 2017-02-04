@@ -7,6 +7,7 @@ OpenEducator is a self-hosted learning management system that allows you to crea
 2. NoSQL integration/storage. Currently stores files as JSON on server. 
 3. Student enrollment/progress storage. 
 4. Design that is not absolutely horrible. 
+
 ------
 ## What are Courses?
 The structure of a course is as follows:- 
