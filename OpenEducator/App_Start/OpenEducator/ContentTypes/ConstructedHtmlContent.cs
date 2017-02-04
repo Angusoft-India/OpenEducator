@@ -7,16 +7,16 @@ namespace OpenEducator.ContentTypes {
 
     public class ConstructedHtmlContent: Content {
 
-        public string Element { get; set; }
-        public Content Data { get; set; }
+        public string Element { get; set; } = "div";
+        public Content Data { get; set; } = null;
 
         public ConstructedHtmlContent(string element, Content data) {
             Element = element;
-            Data = data;
+            Data = data ?? null;
         }
 
         public override string Render() {
-            return Wrap(Element, Data.Render(), base.Style, base.Classes, base.ID);
+            return Wrap(Element, (Data == null ? "" : Data?.Render()), base.Style, base.Classes, base.ID, base.Open);
         }
 
     }

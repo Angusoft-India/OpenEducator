@@ -1340,6 +1340,10 @@ select[multiple] {
     .s-double-padded {
         padding: 2em !important;
     }
+
+    .s-nomargin {
+        margin: 0em !important;
+    }
 }
 
 @media screen and (max-width: 0em), screen and (min-width: 40em) {
@@ -1498,12 +1502,11 @@ select[multiple] {
 
 .button.primary {
     background-color: #2ba6cb;
-    color: #0a0a0a;
+    color: #fefefe;
 }
 
 .button.primary:hover, .button.primary:focus {
-    background-color: #2285a2;
-    color: #0a0a0a;
+    background-color: #258dad;
 }
 
 .button.secondary {

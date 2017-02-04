@@ -1,51 +1,74 @@
-﻿@{ 
-    Dictionary<string, int> Vals = ViewBag.Vals;
+﻿@{
+    ViewBag.Title = "ViewCourse";
 
-    int ID = Vals["ID"];
-    int Chapter = Vals["Chapter"];
-    int Topic = Vals["Topic"];
-    int Page = Vals["Page"];
-
-    Course crs;
-    crs = Course.GetFromID(ID);
+    int courseID = ViewBag.ID;
+    int chapterID = ViewBag.Chapter;
+    int topicID = ViewBag.Topic;
+    int pageID = ViewBag.Page;
 }
 
-@if(crs == null) {
-    ViewBag.Title = "Error";
-    ViewBag.Classes = "padded";
-    <h1>Course does not exist.</h1>
+@if(!Course.Exists(courseID)) {
+    <h1 class="padded" style="color: white;">Course with ID @courseID does not exist.</h1>
     return;
-} else {
-    ViewBag.Title = crs.Name;
 }
 
-<!-- COURSE EXISTS DO STUFF -->
-<div class="row">
-    <div class="columns small-12">
-        <ul class="vertical accordion-menu menu" data-accordion-menu>
-            @foreach(Chapter ch in crs.Chapters) {
-                <li>
-                    <a href="#" end="@crs.Chapters.IndexOf(ch)">@ch.Name</a>
-                    <ul class="menu vertical sublevel-1">
-                        @foreach(Topic top in ch.Topics) {
-                            <li>
-                                <a class="subitem" href="#" end="@crs.Chapters.IndexOf(ch)/@ch.Topics.IndexOf(top)">@ch.Name</a>
-                                <ul class="menu vertical sublevel-2">
-                                    @foreach(OpenEducator.Page pag in top.Pages) {
-                                        <li>
-                                            <a class="subitem" end="@crs.Chapters.IndexOf(ch)/@ch.Topics.IndexOf(top)/@top.Pages.IndexOf(pag)" href="#">@pag.Title</a>
-                                        </li>
-                                    }
-                                </ul>
-                            </li>
-                        }
-                    </ul>
+@{
+    Course crs = Course.GetFromID(courseID);
+    bool showCourse = false, showChapter = false, showTopic = false, showPage = false;
 
-                </li>
-            }
-        </ul>
+    if(chapterID <= -1 || chapterID >= crs.Chapters.Count) {
+        showCourse = true;
+    } else if(topicID <= -1 || topicID >= crs.Chapters[chapterID].Topics.Count) {
+        showChapter = true;
+    } else if(pageID <= -1 || pageID >= crs.Chapters[chapterID].Topics[topicID].Pages.Count) {
+        showTopic = true;
+    } else {
+        showPage = true;
+    }
+
+}
+
+<div class="row margin-top">
+    <div class="medium-8 medium-offset-2" style="background-color: white;">
+        <p>Course ID: @courseID</p>
+        <p>Chapter ID: @chapterID</p>
+        <p>Topic ID: @topicID</p>
+        <p>Page ID: @pageID</p>
     </div>
-    <div class="columns small-12 double-padded s-padded">
-        adas
+</div>
+
+<div class="row">
+    <div class="medium-8 medium-offset-2" style="background-color: white;">
+        <div class="xContent">
+            @if(showCourse) {
+                foreach(Content c in crs.Contents) {
+                    <div class="xContentItem s-padded">
+                        @Html.Raw(c.Render())
+                    </div>
+                }
+            } else if(showChapter) {
+                foreach(Content c in crs.Chapters[chapterID].Contents) {
+                    <div class="xContentItem s-padded">
+                        @Html.Raw(c.Render())
+                    </div>
+                }
+            } else if(showTopic) {
+                foreach(Content c in crs.Chapters[chapterID].Topics[topicID].Contents) {
+                    <div class="xContentItem s-padded">
+                        @Html.Raw(c.Render())
+                    </div>
+                }
+            } else if(showChapter) {
+                foreach(Content c in crs.Chapters[chapterID].Topics[topicID].Pages[pageID].Contents) {
+                    <div class="xContentItem s-padded">
+                        @Html.Raw(c.Render())
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="padded text-center">
+            <a class="button primary">Back to Course Overview</a>
+        </div>
     </div>
 </div>

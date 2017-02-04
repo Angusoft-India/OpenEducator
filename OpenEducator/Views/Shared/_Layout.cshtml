@@ -9,6 +9,7 @@
 </head>
 <body>
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/react")
     
     <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
         <button class="menu-icon" type="button" data-toggle></button>
@@ -31,7 +32,7 @@
     </div>
 
     
-    <div class="container @ViewBag.Classes" style="@ViewBag.ContainerStyle">
+    <div class="container bg-dark @ViewBag.Classes" style="@ViewBag.ContainerStyle">
         @RenderBody()
     </div>
 

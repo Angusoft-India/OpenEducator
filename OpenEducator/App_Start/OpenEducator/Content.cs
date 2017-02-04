@@ -6,7 +6,8 @@ using System.Reflection;
 using System.Web;
 
 namespace OpenEducator {
-    public abstract class Content {     
+
+    public abstract class Content: ICanJsonSerialized {
 
         public string ContentType {
             get {
@@ -21,7 +22,7 @@ namespace OpenEducator {
         /// Put directly inside tag
         /// </summary>
         public string Open { get; set; } = "";
-        
+
         /// <summary>
         /// Wrap data into a tag with optional properties.
         /// </summary>
@@ -36,7 +37,7 @@ namespace OpenEducator {
                 ((classes == null || classes.Length == 0) ? "" : (" class=\"" + string.Join(" ", classes) + "\"")) +
                 (string.IsNullOrWhiteSpace(id) ? "" : (" id=\"" + id + "\"")) +
                 (string.IsNullOrWhiteSpace(style) ? "" : (" style=\"" + style + "\"")) +
-                (string.IsNullOrWhiteSpace(open) ? "" : $" {open}") + 
+                (string.IsNullOrWhiteSpace(open) ? "" : $" {open}") +
                 $@">{data}</{domElement}>";
         }
 
@@ -56,37 +57,12 @@ namespace OpenEducator {
                 (string.IsNullOrWhiteSpace(open) ? "" : $"{open}") +
                 $@"/{domElement}>";
         }
-        
+
         public abstract string Render();
 
-        public static List<PropertyInfo> GetPropertiesOfType(string typeFullName) {
-            return Type.GetType(typeFullName).GetProperties(BindingFlags.DeclaredOnly).ToList();
+        public string JsonString() {
+            return JsonConvert.SerializeObject(this);
         }
 
-        public static List<Type> AvailableContentTypes() {
-            return Assembly.GetExecutingAssembly().GetTypes().Where(t =>
-                (!t.IsAbstract) && (t.IsClass) && (t.Namespace == "OpenEducator.ContentTypes")
-                && (t.BaseType.FullName == "OpenEducator.Content")
-            ).ToList();
-        }
-
-        public static string AllContentTypeProperties() {
-            List<Type> contentTypes = AvailableContentTypes();
-            Dictionary<string, List<string>> contentProps = new Dictionary<string, List<string>>();
-            
-            foreach(Type t in contentTypes) {
-                List<PropertyInfo> propInfo = t.GetProperties(BindingFlags.Public).ToList();
-                List<string> props = new List<string>();
-
-                foreach(PropertyInfo pi in propInfo) {
-                    if(pi.Name == "ContentType") { continue; }
-                    props.Add(pi.Name);
-                }
-
-                contentProps.Add(t.FullName, props);
-            }
-
-            return JsonConvert.SerializeObject(contentProps);
-        }
     }
 }

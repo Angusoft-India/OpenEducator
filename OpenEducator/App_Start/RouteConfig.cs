@@ -28,21 +28,15 @@ namespace OpenEducator
             );
 
             routes.MapRoute(
+                name: "Get Course Json",
+                url: "Course/{id}/json",
+                defaults: new { controller = "Course", action = "CourseJson" }
+            );
+
+            routes.MapRoute(
                 name: "View Course",
-                url: "Course/{id}/",
-                defaults: new { controller = "Course", action = "ViewCourse" }
-            );
-
-            routes.MapRoute(
-                name: "View Chapter",
-                url: "Course/{id}/{chapter}/",
-                defaults: new { controller = "Course", action = "ViewChapter" }
-            );
-
-            routes.MapRoute(
-                name: "View Topic",
-                url: "Course/{id}/{chapter}/{topic}/",
-                defaults: new { controller = "Course", action = "ViewTopic" }
+                url: "Course/{id}/{chapter}/{topic}/{page}",
+                defaults: new { controller = "Course", action = "ViewCourse", chapter = -1, topic = -1, page = -1 }
             );
 
             /* DEFAULT FALLBACK */

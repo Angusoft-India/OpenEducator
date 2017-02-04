@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,53 +14,34 @@ namespace OpenEducator.Controllers
             return View();
         }
         
-        // GET: Course/{name}
-        public ActionResult ViewCourse() {
+        public ActionResult ViewCourse(string id, string chapter, string topic, string page) {
 
-            string id = RouteData.Values["id"] as string;
-
-            string chap = RouteData.Values["chapter"] as string;
-            string topi = RouteData.Values["topic"] as string;
-            string page = RouteData.Values["page"] as string;
-
-            ViewBag.Vals = new Dictionary<string, int>() {
-                ["ID"] = RetrieveValue(id),
-                ["Chapter"] = RetrieveValue(chap),
-                ["Topic"] = RetrieveValue(topi),
-                ["Page"] = RetrieveValue(page),
-            };
+            try {
+                ViewBag.ID = int.Parse(id);
+                ViewBag.Chapter = int.Parse(chapter);
+                ViewBag.Topic = int.Parse(topic);
+                ViewBag.Page = int.Parse(page);
+            } catch {
+                return HttpNotFound("Invalid Course, Chapter, Topic, or Page ID.");
+            }
 
             return View();
         }
 
-        public ActionResult ViewChapter() {
+        [OutputCache(Location = System.Web.UI.OutputCacheLocation.None)]
+        public JsonResult CourseJson(string id) {
+            int nID = 0;
 
-            return View();
-        }
+            if(int.TryParse(id, out nID)) {
+                return new JsonResult() {
+                    Data = Course.GetFromID(nID),
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
+            } else {
+                return null;
+            }
 
-        public ActionResult ViewTopic() {
 
-            string id = RouteData.Values["id"] as string;
-
-            string chap = RouteData.Values["chapter"] as string;
-            string topi = RouteData.Values["topic"] as string;
-            string page = RouteData.Values["page"] as string;
-
-            ViewBag.Vals = new Dictionary<string, int>() {
-                ["ID"] = RetrieveValue(id),
-                ["Chapter"] = RetrieveValue(chap),
-                ["Topic"] = RetrieveValue(topi),
-                ["Page"] = RetrieveValue(page),
-            };
-
-            return View();
-        }
-
-        int RetrieveValue(string text, int returnVal = -1) {
-            if(string.IsNullOrWhiteSpace(text)) { return returnVal; }
-            int val = 0;
-            if(!int.TryParse(text, out val)) { return returnVal; }
-            return val;
         }
     }
 }

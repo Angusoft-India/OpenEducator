@@ -17,7 +17,11 @@ namespace OpenEducator {
         List<Content> Contents { get; set; }
     }
 
-    public class Course: IHasContent {
+    public interface ICanJsonSerialized {
+        string JsonString();
+    }
+
+    public class Course: IHasContent, ICanJsonSerialized {
 
         public static string CourseDirectory {
             get {
@@ -105,8 +109,6 @@ namespace OpenEducator {
             string data = JsEncode(JsonConvert.SerializeObject(this));
             return data.Substring(1, data.Length - 2);
         }
-
-
         string JsEncode(string data) {
             System.Text.StringBuilder sb = new StringBuilder();
             sb.Append("\"");
@@ -168,5 +170,7 @@ namespace OpenEducator {
                 File.WriteAllText(writer.Path, jsonData);
             }
         }
+
+        /* DEBUG */
     }
 }

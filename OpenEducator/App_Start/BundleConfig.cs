@@ -5,7 +5,7 @@ namespace OpenEducator {
     public class BundleConfig {
 
         public static void RegisterBundles(BundleCollection bundles) {
-            
+
             //Fundamental CSS Bundle
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/normalize.css",
@@ -14,7 +14,7 @@ namespace OpenEducator {
                 "~/Content/contentStyles.css",
                 "~/Content/site.css"
             ));
-            
+
             //jQuery
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-{version}.js"));
 
@@ -25,6 +25,14 @@ namespace OpenEducator {
                 "~/Scripts/foundation.js",
                 "~/Scripts/app.js"
             ));
+
+            bundles.Add(new ScriptBundle("~/bundles/react").Include(
+                "~/Scripts/react/react.js",
+                //"~/Scripts/react/react-with-addons.js",
+                "~/Scripts/react/react-dom.js",
+                "~/Scripts/react/react-dom-server.js"
+            ));
+            
         }
     }
 }

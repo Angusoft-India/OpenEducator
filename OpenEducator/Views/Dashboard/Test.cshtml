@@ -1,72 +1,69 @@
 ﻿@using OpenEducator;
 @using OpenEducator.ContentTypes;
+@using Newtonsoft.Json;
+
 @{
     ViewBag.Title = "Test";
-}
-
-<style>
-    body {
-        background-color: #424242 !important;
-    }
-</style>
-
-@{
-
-    List<Content> conts = new List<Content>();
-    for(int i = 1; i < 11; i++) {
-        conts.Add(new TextContent($"Number {i}", TextContent.TextType.A) {
-            Open = @"href=""http://www.aryanmann.com/"""
-        });
-    }
 
     Course cs = new Course() {
-        Name = "Learning Web Development Through Wordpress",
-        ID = 13370,
-        Author = "University of Aryan",
-        Description = "Learn the basics of web development through WordPress by utilizing HTML, CSS, JavaScript, PHP.",
-        Instructors = new List<Instructor>() {
-            new Instructor(){ Name = "Aryan Mann", ID = 1337 }
-        },
-        SnapshotUrl = @"https://www.smashingmagazine.com/wp-content/uploads/2013/03/Wordpress-start-image.jpg",
-        YoutubeVideoID = "G6xWZoCFmOw",
-        Contents = new List<Content>(){
-            new TextContent("WordPress is a free and open-source content management system (CMS) based on PHP and MySQL. WordPress is installed on a web server that is either part of an Internet hosting service or a network host in its own right. The first case may be a service like WordPress.com, for example, and the second case could be a computer running the software package WordPress.org."),
-            new TextContent("We will be focusing on creating our own self-hosted WordPress service using a software called XAMPP which emulates web servers.")
+        Name = "Introduction To Web Development",
+        Author = "Aryan Mann",
+        Description = "Learn the basics of front-end web development through HTML, CSS, JavaScript, and React",
+        SnapshotUrl = "http://www.placehold.it/400x300",
+        Instructors = new List<Instructor>() { new Instructor() { Name = "Aryan Mann", ID = 1337 } },
+        ID = 123123,
+        YoutubeVideoID = "3JluqTojuME",
+        Contents = new List<Content>() {
+            new TextContent("Welcome!", TextContent.TextType.H1),
+            new ImageContent("http://paperlinksoftwares.com/wp-content/themes/enigma/images/Untitled-2.jpg"){
+                Style = "width: 100%; height: auto;"
+            },
+            new TextContent("Web development can be abstracted to front-end and back-end. Back-end refers to how things function, how data is managed, etc. Whereas, front-end usually means how the data looks. In this course, we are going to understanding how to display data and create user interfaces that can take data and visualize it in a meaningful way.")
         },
         Chapters = new List<Chapter>() {
             new Chapter() {
-                Name = "The Setup",
-                Description = "We setup our development environment by installing XAMPP, VSCode, and WordPress",
-                Contents = new List<Content>() {
-
-                },
-                Topics = new List<Topic>() {
-
+                Name = "Introduction to HTML and CSS",
+                Description = "All webpages are built on top of HTML and styled through CSS. We are going to take a look at what HTML is and how user interfaces are designed.",
+                Contents = new List<Content>(){
+                    new TextContent("Right click on this page and select 'Inspect Element'. Do you see all the <something> blah blah </something> tags? These are called HTML tags. We use these tags to create content that the user can see. There are few essential parts to every modern webpage:- "),
                 }
             }
         }
     };
-
     cs.Save();
 }
 
-<div class="row" style="margin-top: 2em;">
-    <div class="medium-8 medium-offset-2 double-padded" style="background-color: white;">
-        <fieldset class="fieldset" style="margin: 0;">
-            <legend>Course Introduction</legend>            
-            @{ 
-                YoutubeVideoContent yvc = new YoutubeVideoContent(cs.YoutubeVideoID) {
-                    Style = "width: 100%; min-height: 350px; margin-bottom: 1em;"
-                };
-            }
-            
-            @Html.Raw(yvc.Render())
 
-            <br/>
-
-            @foreach(Content c in cs.Contents) {
-                @Html.Raw(c.Render())
-            }
-        </fieldset>
+<div class="row margin-top">
+    <div class="medium-8 medium-offset-2" style="background-color: white;">
+        
     </div>
 </div>
+
+
+<div class="row margin-top">
+    <div class="medium-8 medium-offset-2" style="background-color: white;">
+        
+        <div class="xContent">
+            @foreach(Content c in cs.Contents) {
+                if(c.GetType() == typeof(ImageContent)) {
+                    <div class="xContentItem nopad">
+                        @Html.Raw(c.Render())
+                    </div>
+                } else {
+                    <div class="xContentItem s-padded">
+                        @Html.Raw(c.Render())
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="padded text-center">
+            <a class="button primary">Back to Course Overview</a>
+        </div>
+    </div>
+</div>
+
+
+<script src="@Url.Content("~/Scripts/Components/DataBind.jsx")"></script>
+@Html.Raw(Html.ReactInitJavaScript())

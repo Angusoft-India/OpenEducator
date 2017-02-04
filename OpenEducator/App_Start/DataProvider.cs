@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -34,6 +35,10 @@ namespace OpenEducator.App_Start
         public static Menu GetMenu(string key) {
             if (PredefinedMenus.Keys.Contains(key)) { return PredefinedMenus[key]; }
             else { return new Menu() { Links = new Dictionary<string, string>() }; }
+        }
+
+        public static string JsonEncode(object obj) {
+            return JsonConvert.SerializeObject(obj);
         }
         
     }
