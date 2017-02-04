@@ -55,9 +55,14 @@ namespace OpenEducator {
         }
 
         public Course() { }
+        public static JsonSerializerSettings DefaultSettings { get; set; } = new JsonSerializerSettings() {
+            Formatting = Formatting.Indented,
+            MissingMemberHandling = MissingMemberHandling.Ignore,
+            TypeNameHandling = TypeNameHandling.Objects
+        };
 
         public void Save() {
-            string jsonData = JsonConvert.SerializeObject(this);
+            string jsonData = JsonConvert.SerializeObject(this, DefaultSettings);
             File.WriteAllText(CoursePath, jsonData);
         }
 
@@ -88,7 +93,7 @@ namespace OpenEducator {
 
             string jsonData = File.ReadAllText(coursePath);
 
-            return JsonConvert.DeserializeObject<Course>(jsonData, new ContentConverter());
+            return JsonConvert.DeserializeObject<Course>(jsonData, DefaultSettings);
         }
 
         public static List<Course> GetAll() {
@@ -103,7 +108,7 @@ namespace OpenEducator {
         }
 
         public string JsonString() {
-            return JsonConvert.SerializeObject(this);
+            return JsonConvert.SerializeObject(this, DefaultSettings);
         }
         public string EncodedJsonString() {
             string data = JsEncode(JsonConvert.SerializeObject(this));
@@ -148,7 +153,7 @@ namespace OpenEducator {
             sb.Append("\"");
 
             return sb.ToString();
-        }      
+        }
 
         /* DEBUG */
     }

@@ -24,6 +24,8 @@ namespace OpenEducator {
         /// Put directly inside tag
         /// </summary>
         public string Open { get; set; } = "";
+        public string[] xContentClasses { get; set; } = new string[] { };
+        public string xContentStyle { get; set; } = "";
 
         /// <summary>
         /// Wrap data into a tag with optional properties.
@@ -65,7 +67,6 @@ namespace OpenEducator {
         public string JsonString() {
             return JsonConvert.SerializeObject(this);
         }
-
     }
 
     public class ContentConverter: JsonConverter {
@@ -88,4 +89,5 @@ namespace OpenEducator {
             File.WriteAllText(writer.Path, jsonData);
         }
     }
+
 }

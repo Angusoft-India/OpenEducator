@@ -151,8 +151,19 @@ div.image-holder .image-overlay {
     margin-bottom: 0;
 }
 
+.xContent {
+    display: flex;
+    flex-direction: column;
+}
+
 .xContentItem {
-    padding: 2em;
+    padding: 1em;
+    padding-top: 0em;
+    display: flex;
+}
+
+.xContent .xContentItem:first-child {
+    padding-top: 1em;
 }
 
 .h-nopad {

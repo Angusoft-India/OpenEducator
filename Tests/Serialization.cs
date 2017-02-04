@@ -18,19 +18,22 @@ namespace Tests {
                 METHODOLOGY: Serailize and object, deserialize it, and the reserialized it and compare              
             */
 
-            object obj = new ListContent(new List<Content>() {
-                new TextContent("Dude"),
-                new TextContent("Stuff"),
-                new ImageContent("http://www.placehold.it/400x300")
-            });
+            Course c = new Course() {
+                Contents = new List<Content>() {
+                    new ListContent(new List<Content>() {
+                        new TextContent("A"),
+                        new TextContent("B"),
+                        new TextContent("C")
+                    })
+                }
+            };
 
-            string serailizedObjString = JsonConvert.SerializeObject(obj);
-            Type t = obj.GetType();
+            string jsonData = c.JsonString();
 
-            object deserializedObj = JsonConvert.DeserializeObject(serailizedObjString, t, new JsonConverter[] { new ContentConverter() });
-            string deseralizedObjString = JsonConvert.SerializeObject(deserializedObj);
+            Course cCopy = (Course) JsonConvert.DeserializeObject(jsonData, Course.DefaultSettings);
+            string jsonDataCopy = cCopy.JsonString();
 
-            Assert.IsTrue(serailizedObjString.Equals(deseralizedObjString));
+            Assert.IsTrue(jsonData.Equals(jsonDataCopy));
         }
     }
 }

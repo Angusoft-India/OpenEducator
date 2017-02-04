@@ -9,10 +9,12 @@ namespace OpenEducator.ContentTypes {
 
         public List<Content> Items { get; set; } = new List<Content>();
         public string[] ItemClasses { get; set; }
+        public bool Unordered { get; set; } = true;
 
-        public ListContent(List<Content> items, string[] itemClasses = null) {
+        public ListContent(List<Content> items, bool unordered = true, string[] itemClasses = null) {
             Items = items;
             ItemClasses = itemClasses;
+            Unordered = unordered;
         }
 
         public override string Render() {
@@ -20,7 +22,7 @@ namespace OpenEducator.ContentTypes {
             foreach(Content c in Items) {
                 data += Wrap("li", c.Render(), classes: ItemClasses);
             }
-            return Wrap("ul", data, base.Style, base.Classes, base.ID, base.Open);
+            return Wrap(Unordered ? "ul" : "ol", data, base.Style, base.Classes, base.ID, base.Open);
         }
 
     }

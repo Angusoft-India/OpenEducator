@@ -8,6 +8,7 @@ namespace OpenEducator.App_Start
 {
     public static class DataProvider
     {
+        // STRINGS
         private static Dictionary<string, string> StringsData = new Dictionary<string, string>() {
             #region Hardcoded Strings
             ["SiteTitle"] = "OpenEducator",
@@ -21,6 +22,7 @@ namespace OpenEducator.App_Start
             else return default(string);
         }
 
+        // MENUS
         public struct Menu {
             public Dictionary<string, string> Links { get; set; }
         }
@@ -36,7 +38,8 @@ namespace OpenEducator.App_Start
             if (PredefinedMenus.Keys.Contains(key)) { return PredefinedMenus[key]; }
             else { return new Menu() { Links = new Dictionary<string, string>() }; }
         }
-
+        
+        // JSON ENCODE
         public static string JsonEncode(object obj) {
             return JsonConvert.SerializeObject(obj);
         }
