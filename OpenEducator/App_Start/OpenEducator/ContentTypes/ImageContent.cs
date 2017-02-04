@@ -14,7 +14,7 @@ namespace OpenEducator.ContentTypes {
         }
 
         public override string Render() {
-            return WrapSelfClosing("img", base.Style, base.Classes, base.ID, "src=\"" + Source + "\"");
+            return WrapSelfClosing("img", base.Style, base.Classes, base.ID, $@"src=""{Source}""");
         }
 
     }

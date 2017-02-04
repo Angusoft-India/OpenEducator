@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -64,5 +66,26 @@ namespace OpenEducator {
             return JsonConvert.SerializeObject(this);
         }
 
+    }
+
+    public class ContentConverter: JsonConverter {
+
+        public override bool CanConvert(Type objectType) {
+            return (objectType.BaseType == typeof(Content));
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
+            JObject jo = JObject.Load(reader);
+            Type t = Type.GetType(jo["ContentType"].Value<string>());
+
+            dynamic dt = jo.ToObject(t);
+
+            return dt;
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
+            string jsonData = JsonConvert.SerializeObject(value, writer.Formatting);
+            File.WriteAllText(writer.Path, jsonData);
+        }
     }
 }

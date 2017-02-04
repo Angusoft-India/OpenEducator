@@ -13,9 +13,7 @@ namespace OpenEducator.ContentTypes
 
         public TextType Tag { get; set; } = TextType.P;
         public string Text { get; set; } = "Lorem Ipsum";
-
-        public TextContent() { }
-
+        
         public TextContent(string text, TextType tag = TextType.P) {
             Tag = tag;
             Text = text;

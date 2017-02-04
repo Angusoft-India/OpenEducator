@@ -148,28 +148,7 @@ namespace OpenEducator {
             sb.Append("\"");
 
             return sb.ToString();
-        }
-
-        public class ContentConverter: JsonConverter {
-
-            public override bool CanConvert(Type objectType) {
-                return (objectType == typeof(Content));
-            }
-
-            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
-                JObject jo = JObject.Load(reader);
-                Type t = Type.GetType(jo["ContentType"].Value<string>());
-
-                dynamic dt = jo.ToObject(t);
-
-                return dt;
-            }
-
-            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
-                string jsonData = JsonConvert.SerializeObject(value, writer.Formatting);
-                File.WriteAllText(writer.Path, jsonData);
-            }
-        }
+        }      
 
         /* DEBUG */
     }
