@@ -18,7 +18,9 @@
                 Style = "width: 100%; height: auto;",
                 xContentClasses = new string[]{ "h-nopad" }
             },
-            new TextContent("In this course, we are going to be mainly talking about these things:- "),
+            new TextContent("In this course, we are going to be mainly talking about these things:- "){
+                Classes = new string[] { "v-nopad" }
+            },
             new ListContent(new List<Content>() {
                 new TextContent("What Colleges Look For"),
                 new TextContent("Deadlines"),
@@ -31,13 +33,58 @@
         },
         Chapters = new List<Chapter>() {
             new Chapter() {
-                Name = "Introduction to HTML and CSS",
-                Description = "All webpages are built on top of HTML and styled through CSS. We are going to take a look at what HTML is and how user interfaces are designed.",
-                Contents = new List<Content>(){
-                    new TextContent("Right click on this page and select 'Inspect Element'. Do you see all the <something> blah blah </something> tags? These are called HTML tags. We use these tags to create content that the user can see. There are few essential parts to every modern webpage:- "),
+                Name = "The Process of Applying",
+                Description = "How exactly does one apply to colleges?",
+                Topics = new List<Topic>() {
+                    new Topic() {
+                        Name = "Overview",
+                        Contents = new List<Content>() {
+                            new TextContent("The basic process of applying to colleges can be boiled down to these steps:- "),
+                            new ListContent(new List<Content>() {
+                                new RawHtmlContent("GPA / Course Rigor - Do well in the most rigorous classes in school."),
+                                new RawHtmlContent("Standarized Testing - Get high scores in standardized tests such as the SAT or ACT."),
+                                new RawHtmlContent("ECs - Participate in few extra-curiccular activities that you are passionate about."),
+                                new RawHtmlContent("Essays - Write essays and fill out applications: CommonApp, Coalition App, or Custom."),
+                                new RawHtmlContent("Financial Aid - Submit your financials (CSS Profile)."),
+                                new RawHtmlContent("After Submitting - Wait for decisions.")
+                            }, false),
+                            new TextContent("Let's go over these steps in more detail.")
+                        },
+                        Pages = new List<OpenEducator.Page>() {
+                            new OpenEducator.Page() {
+                                Name = "GPA / Course Rigor",
+                                Contents = new List<Content>() {
+                                    new TextContent("Grade Point Average", TextContent.TextType.H2),
+                                    new TextContent("Your grade point average represents how well you did in school. The problem with GPA's is that they are hard to compare since a 3.7 can hold different meanings depending on the school or state. Thus, in addition to your GPA, colleges pay attention to your course rigor."),
+                                    new TextContent("Course Rigor", TextContent.TextType.H2),
+                                    new TextContent("While GPA's give an insight on how you are as a student, they can be misleading. In addition to your GPA, colleges look at the rigor of your courses. Colleges want students to challenge themselves even if it means having a lower GPA. They prefer a student with a 3.8 GPA who has taken Honors classes over a student with a 4.0 GPA who has been breezing through all the easy classes.")
+                                }
+                            },
+                            new OpenEducator.Page() {
+                                Name = "Standardized Testing",
+                                Contents = new List<Content>() {
+                                    new TextContent("SAT/ACT", TextContent.TextType.H2),
+                                    new TextContent("Colleges usually do not have a preference over which one you take. We suggest taking both once to see which is more suited to your abilities. See the conversion chart below:- "),
+                                    new TextContent("SAT <-> ACT Score Converter", TextContent.TextType.A) {
+                                        Open = "href=\"https://magoosh.com/hs/act/2015/act-to-sat-score-conversion/\""
+                                    },
+                                    new TextContent("SAT Subject Tests", TextContent.TextType.H2),
+                                    new TextContent("The most selective colleges (Cornell, MIT, Yale, etc.) require SAT Subject Tests. Subject Tests are tests that are usually an hour long and contain questions only on one subject such as Physics, Math, or Literature. You can take atmost two Subject Tests in one sitting. Check requirements of the school for more information on which SAT Subject Tests you should take."),
+                                    new TextContent("The best time to take standardized tests are the year before your final year so that you spend your senior year writing high quality essays.")
+                                }
+                            },
+                            new OpenEducator.Page() {
+                                Name = "ECs",
+                                Contents = new List<Content>() {
+                                    new TextContent("Unless you have literally cured cancer, your ECs are a pile of dogshit.")
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
     };
+
     cs.Save();
 }

@@ -16,6 +16,7 @@
     Course crs = Course.GetFromID(courseID);
     bool showCourse = false, showChapter = false, showTopic = false, showPage = false;
 
+    //check if the user is requesting the course, a chapter, a topic, or a page
     if(chapterID <= -1 || chapterID >= crs.Chapters.Count) {
         showCourse = true;
     } else if(topicID <= -1 || topicID >= crs.Chapters[chapterID].Topics.Count) {
@@ -28,42 +29,89 @@
 
 }
 
-<div class="row margin-top">
+<div class="row margin-top s-nomargin">
     <div class="medium-8 medium-offset-2" style="background-color: white;">
-        <p>Course ID: @courseID</p>
-        <p>Chapter ID: @chapterID</p>
-        <p>Topic ID: @topicID</p>
-        <p>Page ID: @pageID</p>
-    </div>
-</div>
 
-<div class="row">
-    <div class="medium-8 medium-offset-2" style="background-color: white;">
-        <div class="xContent">
-            @if(showCourse) {
-                foreach(Content c in crs.Contents) {
-                    <div class="xContentItem s-padded">
-                        @Html.Raw(c.Render())
-                    </div>
+        @{
+            List<Content> ToShow = new List<Content>();
+            List<KeyValuePair<string, string>> Links = new List<KeyValuePair<string, string>>();
+            List<KeyValuePair<string, string>> Crumbs = new List<KeyValuePair<string, string>>();
+            string title = "";
+
+            if(showCourse) {
+                ToShow = crs.Contents;
+                title = crs.Name;
+                foreach(Chapter c in crs.Chapters) {
+                    Links.Add(new KeyValuePair<string, string>($"/Course/{crs.ID}/{crs.Chapters.IndexOf(c)}", $"{c.Name}"));
                 }
             } else if(showChapter) {
-                foreach(Content c in crs.Chapters[chapterID].Contents) {
-                    <div class="xContentItem s-padded">
-                        @Html.Raw(c.Render())
-                    </div>
+                ToShow = crs.Chapters[chapterID].Contents;
+                title = crs.Chapters[chapterID].Name;
+                foreach(Topic t in crs.Chapters[chapterID].Topics) {
+                    Links.Add(new KeyValuePair<string, string>($"/Course/{crs.ID}/{chapterID}/{crs.Chapters[chapterID].Topics.IndexOf(t)}", $"{t.Name}"));
                 }
             } else if(showTopic) {
-                foreach(Content c in crs.Chapters[chapterID].Topics[topicID].Contents) {
-                    <div class="xContentItem s-padded">
-                        @Html.Raw(c.Render())
-                    </div>
+                ToShow = crs.Chapters[chapterID].Topics[topicID].Contents;
+                title = crs.Chapters[chapterID].Topics[topicID].Name;
+                foreach(OpenEducator.Page p in crs.Chapters[chapterID].Topics[topicID].Pages) {
+                    Links.Add(new KeyValuePair<string, string>($"/Course/{crs.ID}/{chapterID}/{topicID}/{crs.Chapters[chapterID].Topics[topicID].Pages.IndexOf(p)}", $"{p.Name}"));
                 }
-            } else if(showChapter) {
-                foreach(Content c in crs.Chapters[chapterID].Topics[topicID].Pages[pageID].Contents) {
-                    <div class="xContentItem s-padded">
-                        @Html.Raw(c.Render())
-                    </div>
+            } else if(showPage) {
+                ToShow = crs.Chapters[chapterID].Topics[topicID].Pages[pageID].Contents;
+                title = crs.Chapters[chapterID].Topics[topicID].Pages[pageID].Name;
+                foreach(OpenEducator.Page p in crs.Chapters[chapterID].Topics[topicID].Pages) {
+                    Links.Add(new KeyValuePair<string, string>($"/Course/{crs.ID}/{chapterID}/{topicID}/{crs.Chapters[chapterID].Topics[topicID].Pages.IndexOf(p)}", $"{p.Name}"));
                 }
+            } else {
+                ToShow = crs.Contents; //Fallback, will never reach here though.
+            }
+
+            Crumbs.Add(new KeyValuePair<string, string>($"/Course/{crs.ID}", crs.Name));
+            if(chapterID >= 0) {
+                Crumbs.Add(new KeyValuePair<string, string>($"/Course/{crs.ID}/{chapterID}", crs.Chapters[chapterID].Name));
+            }
+            if(topicID >= 0) {
+                Crumbs.Add(new KeyValuePair<string, string>($"/Course/{crs.ID}/{chapterID}/{topicID}", crs.Chapters[chapterID].Topics[topicID].Name));
+            }
+            if(pageID >= 0) {
+                Crumbs.Add(new KeyValuePair<string, string>($"/Course/{crs.ID}/{chapterID}/{topicID}/{pageID}", crs.Chapters[chapterID].Topics[topicID].Pages[pageID].Name));
+            }
+        }
+
+        <nav class="xBreadcrumbs" role="navigation">
+            <ul class="breadcrumbs">
+                @foreach(var kvp in Crumbs) {
+                    if(kvp.Equals(Crumbs.Last())) {
+                        <li class="current"><span class="show-for-sr">Current: </span>@kvp.Value</li>
+                    } else {
+                        <li><a href="@kvp.Key">@kvp.Value</a></li>
+                    }
+                }
+            </ul>
+        </nav>
+
+        <h1 class="xPageTitle">@title</h1>
+
+        <div class="xContent">
+            @{ string xClass = "";
+                string xStyle = "";
+                ToShow = ToShow ?? new List<Content>(); }
+            @foreach(Content c in ToShow) {
+
+                xClass = (c.xContentClasses.Length > 0) ? "xContentItem " + string.Join(" ", c.xContentClasses) : "xContentItem";
+                xStyle = (!string.IsNullOrWhiteSpace(c.xContentStyle)) ? "style=\"" + c.xContentStyle + "\"" : "";
+
+                <div class="@xClass" @xStyle>
+                    @Html.Raw(c.Render())
+                </div>
+            }
+        </div>
+
+        <div class="xPageNav">
+            @foreach(KeyValuePair<string, string> kvp in Links) {
+                <div class="xPageNavItem">
+                    <a href="@kvp.Key">@kvp.Value</a>
+                </div>
             }
         </div>
 

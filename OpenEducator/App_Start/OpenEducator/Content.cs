@@ -11,12 +11,6 @@ namespace OpenEducator {
 
     public abstract class Content: ICanJsonSerialized {
 
-        public string ContentType {
-            get {
-                return GetType().FullName;
-            }
-        }
-
         public string[] Classes { get; set; } = new string[] { };
         public string ID { get; set; } = "";
         public string Style { get; set; } = "";

@@ -7,7 +7,8 @@ namespace OpenEducator.ContentTypes {
 
     public class RawHtmlContent: Content {
 
-        string Data { get; set; }
+        public string Data { get; set; }
+
         public RawHtmlContent(string data) {
             Data = data;
         }

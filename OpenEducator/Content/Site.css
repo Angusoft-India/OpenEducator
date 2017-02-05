@@ -146,7 +146,7 @@ div.image-holder .image-overlay {
     margin: 0;
 }
 
-/* REACT STUFF */
+/* ViewCourse STUFF */
 .xContentItem * {
     margin-bottom: 0;
 }
@@ -177,4 +177,48 @@ div.image-holder .image-overlay {
 
 .nopad {
     padding: 0;
+}
+
+.xPageTitle {
+    padding: 0.4em;
+    text-align: center;
+    background-color: #2ba6cb;
+    color: white;
+    margin: 0;
+}
+
+/* Top Nav Bar */
+.xPageNav {
+    list-style-type: none;
+    display: flex;
+    padding: 0.4em;
+    margin: 0;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #2ba6cb;
+}
+
+.xPageNav .xPageNavItem {
+    background-color: white;
+    font-size: 1.4em;
+    border: 2px solid white;
+    text-align: center;
+    margin: 0.1em;
+}
+
+.xPageNav .xPageNavItem a {
+    padding: 0.6em;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+/* BREADCRUMBS */
+.xBreadcrumbs ul {
+    margin: 0;
+    padding: 0.5em;
+}
+.xBreadcrumbs ul li, .xBreadcrumbs ul li a {
+    font-size: 1em;
+    font-weight: bold;
 }
