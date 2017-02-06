@@ -28,6 +28,18 @@ namespace OpenEducator.Controllers
             return View();
         }
 
+        public PartialViewResult _Course(Course crs, int courseID, int chapterID, int topicID, int pageID) {
+            ViewBag.Course = crs;
+
+            ViewBag.ID = courseID;
+            ViewBag.Chapter = chapterID;
+            ViewBag.Topic = topicID;
+            ViewBag.Page = pageID;
+            
+
+            return PartialView();
+        }
+
         [OutputCache(Location = System.Web.UI.OutputCacheLocation.None)]
         public JsonResult CourseJson(string id) {
             int nID = 0;

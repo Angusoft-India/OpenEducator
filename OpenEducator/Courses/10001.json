@@ -1,7 +1,7 @@
 {
   "$type": "OpenEducator.Course, OpenEducator",
   "CoursePath": "I:\\Gits\\OpenEducator\\OpenEducator\\Courses\\10001.json",
-  "Name": "US Colleges Applications",
+  "Name": "US College Applications",
   "ID": 10001,
   "Description": "The application process can be confusing, lengthy, and expensive. Learn how to most efficiently complete it.",
   "Contents": [
@@ -17,11 +17,11 @@
       "xContentStyle": ""
     },
     {
-      "$type": "OpenEducator.ContentTypes.ImageContent, OpenEducator",
+      "$type": "OpenEducator.ContentTypes.ImageAsBackground, OpenEducator",
       "Source": "https://aos.iacpublishinglabs.com/question/aq/700px-394px/students-pose-for-their-official-group-photograph-at-the-news-photo_51a7b5c4bc2683f5.jpg?domain=cx.aos.ask.com",
       "Classes": [],
       "ID": "",
-      "Style": "width: 100%; height: auto;",
+      "Style": "width: 100%; height: 394px;",
       "Open": "",
       "xContentClasses": [
         "h-nopad"
@@ -124,6 +124,22 @@
       ],
       "ItemClasses": null,
       "Unordered": false,
+      "Classes": [],
+      "ID": "",
+      "Style": "",
+      "Open": "",
+      "xContentClasses": [],
+      "xContentStyle": ""
+    },
+    {
+      "$type": "OpenEducator.ContentTypes.CodePenContent, OpenEducator",
+      "Title": "Time",
+      "User": "aryan-mann",
+      "Slug": "NdzeeK",
+      "ThemeID": "0",
+      "Height": "400px",
+      "Preview": false,
+      "DefaultTab": 6,
       "Classes": [],
       "ID": "",
       "Style": "",

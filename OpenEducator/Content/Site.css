@@ -222,3 +222,8 @@ div.image-holder .image-overlay {
     font-size: 1em;
     font-weight: bold;
 }
+
+/* CODEPEN */
+.cp_embed_wrapper {
+    width: 100%;
+}
