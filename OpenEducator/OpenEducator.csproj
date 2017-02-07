@@ -228,7 +228,9 @@
     <Compile Include="App_Start\DataProvider.cs" />
     <Compile Include="App_Start\OpenEducator\Chapter.cs" />
     <Compile Include="App_Start\OpenEducator\Content.cs" />
+    <Compile Include="App_Start\OpenEducator\ContentTypes\CodePenContent.cs" />
     <Compile Include="App_Start\OpenEducator\ContentTypes\ConstructedHtmlContent.cs" />
+    <Compile Include="App_Start\OpenEducator\ContentTypes\ImageAsBackgroundContent.cs" />
     <Compile Include="App_Start\OpenEducator\ContentTypes\ImageContent.cs" />
     <Compile Include="App_Start\OpenEducator\ContentTypes\ListContent.cs" />
     <Compile Include="App_Start\OpenEducator\ContentTypes\RawHtmlContent.cs" />
@@ -321,10 +323,10 @@
     <Content Include="Views\Maker\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Course\ViewCourse.cshtml" />
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <Content Include="Views\Course\ViewCourse.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

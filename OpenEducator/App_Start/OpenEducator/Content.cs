@@ -21,6 +21,14 @@ namespace OpenEducator {
         public string[] xContentClasses { get; set; } = new string[] { };
         public string xContentStyle { get; set; } = "";
 
+        public abstract string Render();
+
+        public string JsonString() {
+            return JsonConvert.SerializeObject(this);
+        }
+        
+        /* CONTENT TYPE HELPER FUNCTIONS */
+
         /// <summary>
         /// Wrap data into a tag with optional properties.
         /// </summary>
@@ -56,13 +64,22 @@ namespace OpenEducator {
                 $@"/{domElement}>";
         }
 
-        public abstract string Render();
+        public static string OpenMaker(List<KeyValuePair<string,string>> l_kvp) {
+            string _open = "";
+            List<KeyValuePair<string, string>> Inserted = new List<KeyValuePair<string, string>>();
 
-        public string JsonString() {
-            return JsonConvert.SerializeObject(this);
+            foreach(var kvp in l_kvp) {
+                if(!Inserted.Contains(kvp)) {
+                    _open += $@" {kvp.Key}" + (string.IsNullOrWhiteSpace(kvp.Value) ? "" : $"=\"{kvp.Value}\"");
+                    Inserted.Add(kvp);
+                }
+            }
+
+            return _open;
         }
     }
 
+    //Not using this but keep it for some reason.
     public class ContentConverter: JsonConverter {
 
         public override bool CanConvert(Type objectType) {
