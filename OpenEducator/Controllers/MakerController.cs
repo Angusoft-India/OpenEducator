@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace OpenEducator.Controllers
 {
@@ -12,9 +8,7 @@ namespace OpenEducator.Controllers
             return View();
         }
 
-        public ActionResult Edit() {
-            ViewBag.ID = RouteData.Values["id"].ToString();
-
+        public ActionResult TempCreate() {
             return View();
         }
     }

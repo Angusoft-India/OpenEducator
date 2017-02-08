@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace OpenEducator.ContentTypes {
+﻿namespace OpenEducator.Code.ContentTypes {
 
     public class RawHtmlContent: Content {
 

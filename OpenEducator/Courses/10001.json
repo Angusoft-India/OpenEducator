@@ -1,12 +1,12 @@
 {
-  "$type": "OpenEducator.Course, OpenEducator",
+  "$type": "OpenEducator.Code.Course, OpenEducator",
   "CoursePath": "I:\\Gits\\OpenEducator\\OpenEducator\\Courses\\10001.json",
   "Name": "US College Applications",
   "ID": 10001,
   "Description": "The application process can be confusing, lengthy, and expensive. Learn how to most efficiently complete it.",
   "Contents": [
     {
-      "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
+      "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
       "Tag": 0,
       "Text": "Welcome college applicants!",
       "Classes": [],
@@ -17,7 +17,7 @@
       "xContentStyle": ""
     },
     {
-      "$type": "OpenEducator.ContentTypes.ImageAsBackground, OpenEducator",
+      "$type": "OpenEducator.Code.ContentTypes.ImageAsBackgroundContent, OpenEducator",
       "Source": "https://aos.iacpublishinglabs.com/question/aq/700px-394px/students-pose-for-their-official-group-photograph-at-the-news-photo_51a7b5c4bc2683f5.jpg?domain=cx.aos.ask.com",
       "Classes": [],
       "ID": "",
@@ -29,9 +29,9 @@
       "xContentStyle": ""
     },
     {
-      "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
+      "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
       "Tag": 6,
-      "Text": "In this course, we are going to be mainly talking about these things:- ",
+      "Text": "Before we begin, what do colleges really look for in an applicant?",
       "Classes": [
         "v-nopad"
       ],
@@ -42,12 +42,12 @@
       "xContentStyle": ""
     },
     {
-      "$type": "OpenEducator.ContentTypes.ListContent, OpenEducator",
+      "$type": "OpenEducator.Code.ContentTypes.ListContent, OpenEducator",
       "Items": [
         {
-          "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
+          "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
           "Tag": 6,
-          "Text": "What Colleges Look For",
+          "Text": "Strong Academics",
           "Classes": [],
           "ID": "",
           "Style": "",
@@ -56,9 +56,9 @@
           "xContentStyle": ""
         },
         {
-          "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
+          "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
           "Tag": 6,
-          "Text": "Deadlines",
+          "Text": "Rigorous Courses",
           "Classes": [],
           "ID": "",
           "Style": "",
@@ -67,9 +67,9 @@
           "xContentStyle": ""
         },
         {
-          "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
+          "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
           "Tag": 6,
-          "Text": "Testing",
+          "Text": "High Standardized Testing Scores",
           "Classes": [],
           "ID": "",
           "Style": "",
@@ -78,9 +78,9 @@
           "xContentStyle": ""
         },
         {
-          "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
+          "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
           "Tag": 6,
-          "Text": "CommonApp / External Applications",
+          "Text": "Well Written Essays",
           "Classes": [],
           "ID": "",
           "Style": "",
@@ -89,9 +89,9 @@
           "xContentStyle": ""
         },
         {
-          "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
+          "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
           "Tag": 6,
-          "Text": "Letter of Recommendations",
+          "Text": "Awards and Acheivements",
           "Classes": [],
           "ID": "",
           "Style": "",
@@ -100,9 +100,9 @@
           "xContentStyle": ""
         },
         {
-          "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
+          "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
           "Tag": 6,
-          "Text": "Financial Aid",
+          "Text": "Extracurricular Activities",
           "Classes": [],
           "ID": "",
           "Style": "",
@@ -111,9 +111,9 @@
           "xContentStyle": ""
         },
         {
-          "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
+          "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
           "Tag": 6,
-          "Text": "Optimization",
+          "Text": "Authenticity and Passion",
           "Classes": [],
           "ID": "",
           "Style": "",
@@ -132,14 +132,9 @@
       "xContentStyle": ""
     },
     {
-      "$type": "OpenEducator.ContentTypes.CodePenContent, OpenEducator",
-      "Title": "Time",
-      "User": "aryan-mann",
-      "Slug": "NdzeeK",
-      "ThemeID": "0",
-      "Height": "400px",
-      "Preview": false,
-      "DefaultTab": 6,
+      "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
+      "Tag": 6,
+      "Text": "The best colleges require you to possess all these qualities, the rest will overlook one or two weak areas. In this course, we will go over the importance of these qualities while simultaneously guiding you through the process of applying to university.",
       "Classes": [],
       "ID": "",
       "Style": "",
@@ -153,111 +148,118 @@
   "Author": "Aryan Mann",
   "Instructors": [
     {
-      "$type": "OpenEducator.Instructor, OpenEducator",
+      "$type": "OpenEducator.Code.Instructor, OpenEducator",
       "Name": "Aryan Mann",
       "ID": 1337
     }
   ],
   "Chapters": [
     {
-      "$type": "OpenEducator.Chapter, OpenEducator",
-      "Name": "The Process of Applying",
-      "Description": "How exactly does one apply to colleges?",
-      "Contents": null,
+      "$type": "OpenEducator.Code.Chapter, OpenEducator",
+      "Name": "Preperation",
+      "Description": "What do you need to do before starting your application process.",
+      "Contents": [
+        {
+          "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
+          "Tag": 6,
+          "Text": "A complete application requires six things:- ",
+          "Classes": [],
+          "ID": "",
+          "Style": "",
+          "Open": "",
+          "xContentClasses": [],
+          "xContentStyle": ""
+        },
+        {
+          "$type": "OpenEducator.Code.ContentTypes.ListContent, OpenEducator",
+          "Items": [
+            {
+              "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
+              "Tag": 6,
+              "Text": "Standardized Tests - SAT or ACT",
+              "Classes": [],
+              "ID": "",
+              "Style": "",
+              "Open": "",
+              "xContentClasses": [],
+              "xContentStyle": ""
+            },
+            {
+              "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
+              "Tag": 6,
+              "Text": "Special Standardized Tests - SAT Subject Tests (Only required by top colleges)",
+              "Classes": [],
+              "ID": "",
+              "Style": "",
+              "Open": "",
+              "xContentClasses": [],
+              "xContentStyle": ""
+            },
+            {
+              "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
+              "Tag": 6,
+              "Text": "Essays",
+              "Classes": [],
+              "ID": "",
+              "Style": "",
+              "Open": "",
+              "xContentClasses": [],
+              "xContentStyle": ""
+            },
+            {
+              "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
+              "Tag": 6,
+              "Text": "Letter(s) of Recommendation (Required by top colleges)",
+              "Classes": [],
+              "ID": "",
+              "Style": "",
+              "Open": "",
+              "xContentClasses": [],
+              "xContentStyle": ""
+            },
+            {
+              "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
+              "Tag": 6,
+              "Text": "Highschool Transcripts",
+              "Classes": [],
+              "ID": "",
+              "Style": "",
+              "Open": "",
+              "xContentClasses": [],
+              "xContentStyle": ""
+            },
+            {
+              "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
+              "Tag": 6,
+              "Text": "Financial Aid - CSS Profile or FAFSA (only domestic)",
+              "Classes": [],
+              "ID": "",
+              "Style": "",
+              "Open": "",
+              "xContentClasses": [],
+              "xContentStyle": ""
+            }
+          ],
+          "ItemClasses": null,
+          "Unordered": true,
+          "Classes": [],
+          "ID": "",
+          "Style": "",
+          "Open": "",
+          "xContentClasses": [],
+          "xContentStyle": ""
+        }
+      ],
       "Topics": [
         {
-          "$type": "OpenEducator.Topic, OpenEducator",
-          "Name": "Overview",
+          "$type": "OpenEducator.Code.Topic, OpenEducator",
+          "Name": "What to do in highschool?",
           "Description": null,
           "Contents": [
             {
-              "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
+              "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
               "Tag": 6,
-              "Text": "The basic process of applying to colleges can be boiled down to these steps:- ",
-              "Classes": [],
-              "ID": "",
-              "Style": "",
-              "Open": "",
-              "xContentClasses": [],
-              "xContentStyle": ""
-            },
-            {
-              "$type": "OpenEducator.ContentTypes.ListContent, OpenEducator",
-              "Items": [
-                {
-                  "$type": "OpenEducator.ContentTypes.RawHtmlContent, OpenEducator",
-                  "Data": "GPA / Course Rigor - Do well in the most rigorous classes in school.",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                },
-                {
-                  "$type": "OpenEducator.ContentTypes.RawHtmlContent, OpenEducator",
-                  "Data": "Standarized Testing - Get high scores in standardized tests such as the SAT or ACT.",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                },
-                {
-                  "$type": "OpenEducator.ContentTypes.RawHtmlContent, OpenEducator",
-                  "Data": "ECs - Participate in few extra-curiccular activities that you are passionate about.",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                },
-                {
-                  "$type": "OpenEducator.ContentTypes.RawHtmlContent, OpenEducator",
-                  "Data": "Essays - Write essays and fill out applications: CommonApp, Coalition App, or Custom.",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                },
-                {
-                  "$type": "OpenEducator.ContentTypes.RawHtmlContent, OpenEducator",
-                  "Data": "Financial Aid - Submit your financials (CSS Profile).",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                },
-                {
-                  "$type": "OpenEducator.ContentTypes.RawHtmlContent, OpenEducator",
-                  "Data": "After Submitting - Wait for decisions.",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                }
-              ],
-              "ItemClasses": null,
-              "Unordered": false,
-              "Classes": [],
-              "ID": "",
-              "Style": "",
-              "Open": "",
-              "xContentClasses": [],
-              "xContentStyle": ""
-            },
-            {
-              "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
-              "Tag": 6,
-              "Text": "Let's go over these steps in more detail.",
+              "Text": "Umm..",
               "Classes": [],
               "ID": "",
               "Style": "",
@@ -268,147 +270,40 @@
           ],
           "Pages": [
             {
-              "$type": "OpenEducator.Page, OpenEducator",
-              "Name": "GPA / Course Rigor",
+              "$type": "OpenEducator.Code.Page, OpenEducator",
+              "Name": "I did not think this through.",
               "Contents": [
                 {
-                  "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
-                  "Tag": 1,
-                  "Text": "Grade Point Average",
-                  "Classes": [],
+                  "$type": "OpenEducator.Code.ContentTypes.YoutubeVideoContent, OpenEducator",
+                  "VideoID": "ufK2Stdsrtw",
+                  "Classes": [
+                    "YoutubeVideoFrame"
+                  ],
                   "ID": "",
-                  "Style": "",
+                  "Style": "height: 400px; width: 500px;",
                   "Open": "",
                   "xContentClasses": [],
-                  "xContentStyle": ""
-                },
-                {
-                  "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
-                  "Tag": 6,
-                  "Text": "Your grade point average represents how well you did in school. The problem with GPA's is that they are hard to compare since a 3.7 can hold different meanings depending on the school or state. Thus, in addition to your GPA, colleges pay attention to your course rigor.",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                },
-                {
-                  "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
-                  "Tag": 1,
-                  "Text": "Course Rigor",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                },
-                {
-                  "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
-                  "Tag": 6,
-                  "Text": "While GPA's give an insight on how you are as a student, they can be misleading. In addition to your GPA, colleges look at the rigor of your courses. Colleges want students to challenge themselves even if it means having a lower GPA. They prefer a student with a 3.8 GPA who has taken Honors classes over a student with a 4.0 GPA who has been breezing through all the easy classes.",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                }
-              ]
-            },
-            {
-              "$type": "OpenEducator.Page, OpenEducator",
-              "Name": "Standardized Testing",
-              "Contents": [
-                {
-                  "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
-                  "Tag": 1,
-                  "Text": "SAT/ACT",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                },
-                {
-                  "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
-                  "Tag": 6,
-                  "Text": "Colleges usually do not have a preference over which one you take. We suggest taking both once to see which is more suited to your abilities. See the conversion chart below:- ",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                },
-                {
-                  "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
-                  "Tag": 7,
-                  "Text": "SAT <-> ACT Score Converter",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "href=\"https://magoosh.com/hs/act/2015/act-to-sat-score-conversion/\"",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                },
-                {
-                  "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
-                  "Tag": 1,
-                  "Text": "SAT Subject Tests",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                },
-                {
-                  "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
-                  "Tag": 6,
-                  "Text": "The most selective colleges (Cornell, MIT, Yale, etc.) require SAT Subject Tests. Subject Tests are tests that are usually an hour long and contain questions only on one subject such as Physics, Math, or Literature. You can take atmost two Subject Tests in one sitting. Check requirements of the school for more information on which SAT Subject Tests you should take.",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                },
-                {
-                  "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
-                  "Tag": 6,
-                  "Text": "The best time to take standardized tests are the year before your final year so that you spend your senior year writing high quality essays.",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
-                }
-              ]
-            },
-            {
-              "$type": "OpenEducator.Page, OpenEducator",
-              "Name": "ECs",
-              "Contents": [
-                {
-                  "$type": "OpenEducator.ContentTypes.TextContent, OpenEducator",
-                  "Tag": 6,
-                  "Text": "Unless you have literally cured cancer, your ECs are a pile of dogshit.",
-                  "Classes": [],
-                  "ID": "",
-                  "Style": "",
-                  "Open": "",
-                  "xContentClasses": [],
-                  "xContentStyle": ""
+                  "xContentStyle": "justify-content: center;"
                 }
               ]
             }
           ]
         }
       ]
+    },
+    {
+      "$type": "OpenEducator.Code.Chapter, OpenEducator",
+      "Name": "Applying",
+      "Description": "Tackling applications.",
+      "Contents": null,
+      "Topics": []
+    },
+    {
+      "$type": "OpenEducator.Code.Chapter, OpenEducator",
+      "Name": "Matriculating",
+      "Description": "What to do after getting admitted.",
+      "Contents": null,
+      "Topics": []
     }
   ]
 }

@@ -1,0 +1,86 @@
+﻿@using OpenEducator.Code
+@using OpenEducator.Code.ContentTypes
+
+@{ 
+    ViewBag.Title = "Saving";
+
+    Course crs = new Course() {
+        Name = "US College Applications",
+        Author = "Aryan Mann",
+        Description = "The application process can be confusing, lengthy, and expensive. Learn how to most efficiently complete it.",
+        SnapshotUrl = "http://www.dmhsperspective.com/wp-content/uploads/2013/11/college-app-pic.jpg",
+        Instructors = new List<Instructor>() { new Instructor() { Name = "Aryan Mann", ID = 1337 } },
+        ID = 10001,
+        Contents = new List<Content>() {
+            new TextContent("Welcome college applicants!", TextContent.TextType.H1),
+            new ImageAsBackgroundContent("https://aos.iacpublishinglabs.com/question/aq/700px-394px/students-pose-for-their-official-group-photograph-at-the-news-photo_51a7b5c4bc2683f5.jpg?domain=cx.aos.ask.com"){
+                Style = "width: 100%; height: 394px;",
+                xContentClasses = new[]{ "h-nopad" }
+            },
+            new TextContent("Before we begin, what do colleges really look for in an applicant?"){
+                Classes = new[] { "v-nopad" }
+            },
+            new ListContent(new List<Content>() {
+                new TextContent("Strong Academics"),
+                new TextContent("Rigorous Courses"),
+                new TextContent("High Standardized Testing Scores"),
+                new TextContent("Well Written Essays"),
+                new TextContent("Awards and Acheivements"),
+                new TextContent("Extracurricular Activities"),
+                new TextContent("Authenticity and Passion")
+            }, false),
+            new TextContent("The best colleges require you to possess all these qualities, the rest will overlook one or two weak areas. In this course, we will go over the importance of these qualities while simultaneously guiding you through the process of applying to university."),
+        },
+        Chapters = new List<Chapter>() {
+            new Chapter() {
+                Name = "Preperation",
+                Description = "What do you need to do before starting your application process.",
+                Contents = new List<Content>() {
+                    new TextContent("A complete application requires six things:- "),
+                    new ListContent(new List<Content>() {
+                        new TextContent("Standardized Tests - SAT or ACT"),
+                        new TextContent("Special Standardized Tests - SAT Subject Tests (Only required by top colleges)"),
+                        new TextContent("Essays"),
+                        new TextContent("Letter(s) of Recommendation (Required by top colleges)"),
+                        new TextContent("Highschool Transcripts"),
+                        new TextContent("Financial Aid - CSS Profile or FAFSA (only domestic)")
+                    })
+                },
+                Topics = new List<Topic>() {
+                    new Topic() {
+                        Name = "What to do in highschool?",
+                        Contents = new List<Content>() {
+                            new TextContent("Umm..")
+                        },
+                        Pages = new List<OpenEducator.Code.Page>() {
+                            new OpenEducator.Code.Page() {
+                                Name = "I did not think this through.",
+                                Contents = new List<Content>() {
+                                    new YoutubeVideoContent("ufK2Stdsrtw") {
+                                        xContentStyle = "justify-content: center;",
+                                        Style = "min-height: 400px;",
+                                        Classes = new []{ "YoutubeVideoFrame" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            new Chapter() {
+                Name = "Applying",
+                Description = "Tackling applications."
+            },
+            new Chapter() {
+                Name = "Matriculating",
+                Description = "What to do after getting admitted."
+            }
+        }
+    };
+
+    crs.Save();
+}
+
+<h1 style="color: white;" class="double-padded s-padded">Saved @crs.Name!</h1>
+
+@{Response.Redirect("/Course/10001");}

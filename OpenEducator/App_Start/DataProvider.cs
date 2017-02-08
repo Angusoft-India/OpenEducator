@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace OpenEducator.App_Start
 {
@@ -30,7 +28,7 @@ namespace OpenEducator.App_Start
             #region Hardcoded Menus
             ["TopBar"] = new Menu() { Links = new Dictionary<string, string>() {
                 ["Dashboard"] = "/Dashboard", ["Courses"] = "/Course", ["Maker"] = "/Maker",
-                ["Edit 13370"] = "/Maker/Edit/13370", ["Test"] = "/Dashboard/Test"
+                ["Temp Course Saver"] = "/Maker/TempCreate", ["College App Course"] = "/Course/10001"
             }}
             #endregion
         };

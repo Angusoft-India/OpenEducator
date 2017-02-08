@@ -3,11 +3,8 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Web;
 
-namespace OpenEducator {
+namespace OpenEducator.Code {
 
     public abstract class Content: ICanJsonSerialized {
 
@@ -26,7 +23,7 @@ namespace OpenEducator {
         public string JsonString() {
             return JsonConvert.SerializeObject(this);
         }
-        
+
         /* CONTENT TYPE HELPER FUNCTIONS */
 
         /// <summary>
@@ -37,6 +34,7 @@ namespace OpenEducator {
         /// <param name="style">Inline Style</param>
         /// <param name="classes">List of Classes</param>
         /// <param name="id">ID</param>
+        /// <param name="open">Stuff directly inserted into the element</param>
         /// <returns></returns>
         public static string Wrap(string domElement, string data, string style = "", string[] classes = null, string id = null, string open = null) {
             return $@"<{domElement}" +
@@ -54,6 +52,7 @@ namespace OpenEducator {
         /// <param name="style">Inline Style</param>
         /// <param name="classes">List of Classes</param>
         /// <param name="id">ID</param>
+        /// <param name="open">Stuff directly inserted into the element</param>
         /// <returns></returns>
         public static string WrapSelfClosing(string domElement, string style = null, string[] classes = null, string id = null, string open = null) {
             return $@"<{domElement}" +

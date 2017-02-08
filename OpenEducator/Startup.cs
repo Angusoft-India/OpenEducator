@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(OpenEducator.Startup))]
@@ -11,8 +10,6 @@ namespace OpenEducator
             ConfigureAuth(app);
         }
 
-        private void ConfigureAuth(IAppBuilder app) {
-            return;
-        }
+        private void ConfigureAuth(IAppBuilder app) {}
     }
 }

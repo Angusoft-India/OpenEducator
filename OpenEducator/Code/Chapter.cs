@@ -1,14 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace OpenEducator
+namespace OpenEducator.Code
 {
-    public class Topic: IHasContent, ICanJsonSerialized {
+    public class Chapter: IHasContent, ICanJsonSerialized {
 
         public string Name { get; set; }
         public string Description { get; set; }
         public List<Content> Contents { get; set; }
-        public List<Page> Pages { get; set; } = new List<Page>();
+        public List<Topic> Topics { get; set; } = new List<Topic>();
 
         public string JsonString() {
             return JsonConvert.SerializeObject(this);

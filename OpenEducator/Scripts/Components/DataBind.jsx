@@ -67,7 +67,7 @@ var CourseContents = React.createClass({
                     {
                         this.state.data.Chapters.map(function (val, i) {
                             if (val != undefined) {
-                                return <AccordionItem title="Test" level={2} data={val}/>
+                                return <AccordionItem title="Test" level={2} data={val} />
                             }                            
                         })
                     }

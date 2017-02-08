@@ -1,9 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using OpenEducator.Code;
 
 namespace OpenEducator.Controllers
 {
@@ -24,29 +20,17 @@ namespace OpenEducator.Controllers
             } catch {
                 return HttpNotFound("Invalid Course, Chapter, Topic, or Page ID.");
             }
-
+            
             return View();
         }
-
-        public PartialViewResult _Course(Course crs, int courseID, int chapterID, int topicID, int pageID) {
-            ViewBag.Course = crs;
-
-            ViewBag.ID = courseID;
-            ViewBag.Chapter = chapterID;
-            ViewBag.Topic = topicID;
-            ViewBag.Page = pageID;
-            
-
-            return PartialView();
-        }
-
+        
         [OutputCache(Location = System.Web.UI.OutputCacheLocation.None)]
         public JsonResult CourseJson(string id) {
-            int nID = 0;
+            int nID;
 
             if(int.TryParse(id, out nID)) {
                 return new JsonResult() {
-                    Data = Course.GetFromID(nID),
+                    Data = Course.GetFromId(nID),
                     JsonRequestBehavior = JsonRequestBehavior.AllowGet
                 };
             } else {

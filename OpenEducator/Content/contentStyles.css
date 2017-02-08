@@ -20,5 +20,5 @@ p.TextContent-Text {
 /* YoutubeVideoContent */
 iframe.YoutubeVideoFrame {
     border: 0;
-    box-shadow: 0;
+    box-shadow: none;
 }

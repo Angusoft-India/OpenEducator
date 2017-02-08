@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using OpenEducator.ContentTypes;
-using OpenEducator;
+using OpenEducator.Code;
 using System.Collections.Generic;
+using OpenEducator.Code.ContentTypes;
 
 namespace Tests {
 

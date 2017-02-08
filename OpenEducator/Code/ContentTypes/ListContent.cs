@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
-namespace OpenEducator.ContentTypes {
+namespace OpenEducator.Code.ContentTypes {
 
     public class ListContent: Content {
 
-        public List<Content> Items { get; set; } = new List<Content>();
+        public List<Content> Items { get; set; }
         public string[] ItemClasses { get; set; }
-        public bool Unordered { get; set; } = true;
+        public bool Unordered { get; set; }
 
         public ListContent(List<Content> items, bool unordered = true, string[] itemClasses = null) {
             Items = items;
@@ -22,7 +19,7 @@ namespace OpenEducator.ContentTypes {
             foreach(Content c in Items) {
                 data += Wrap("li", c.Render(), classes: ItemClasses);
             }
-            return Wrap(Unordered ? "ul" : "ol", data, base.Style, base.Classes, base.ID, base.Open);
+            return Wrap(Unordered ? "ul" : "ol", data, Style, Classes, ID, Open);
         }
 
     }

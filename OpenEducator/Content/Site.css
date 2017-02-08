@@ -59,7 +59,7 @@ iframe {
 /* CHAPTER TOPIC PAGE LIST */
 ul.ctp-list {
     list-style-type: none;
-    background-color: #2ba6cb;
+    background-color: #166b44;
     padding: 0;
     margin: 0;
     border-bottom: 1px solid black;
@@ -78,7 +78,7 @@ ul.ctp-list li:hover, ul.ctp-list li.active {
 }
 
 ul.ctp-list li:hover a, ul.ctp-list li.active a {
-    color: #2ba6cb;
+    color: #166b44;
 }
 
 ul.ctp-list li a:before {
@@ -123,7 +123,7 @@ li[role=menuitem].dark:hover {
 }
 
 li[role=menuitem].dark:hover a {
-    color: #2ba6cb;
+    color: #166b44;
 }
 
 /* IMAGE WITH OVERLAY */
@@ -158,7 +158,7 @@ div.image-holder .image-overlay {
 
 .xContentItem {
     padding: 1em;
-    padding-top: 0em;
+    padding-top: 0;
     display: flex;
 }
 
@@ -182,7 +182,7 @@ div.image-holder .image-overlay {
 .xPageTitle {
     padding: 0.4em;
     text-align: center;
-    background-color: #2ba6cb;
+    background-color: #166b44;
     color: white;
     margin: 0;
 }
@@ -196,7 +196,7 @@ div.image-holder .image-overlay {
     display: flex; 
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #2ba6cb;
+    background-color: #166b44;
 }
 
 .xPageNav .xPageNavItem {

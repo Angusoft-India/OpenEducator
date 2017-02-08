@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
-namespace OpenEducator.ContentTypes {
+namespace OpenEducator.Code.ContentTypes {
 
     public class CodePenContent: Content {
 
@@ -15,20 +13,13 @@ namespace OpenEducator.ContentTypes {
         public string Title { get; set; }
         public string User { get; set; }
         public string Slug { get; set; }
-        public string ThemeID { get; set; } = "dark";
-        public string Height { get; set; } = "300px";
-
+        public string ThemeId { get; set; }
+        public string Height { get; set; }
         public bool Preview { get; set; }
-        [JsonIgnore]
-        private string PreviewHTML {
-            get {
-                return (Preview) ? " data-preview=\"true\"" : "";
-            }
-        }
-
         public CodePenTabs DefaultTab { get; set; } = CodePenTabs.HtmlResult;
+
         [JsonIgnore]
-        public string DefaultTabHTML {
+        public string DefaultTabHtml {
             get {
 
                 /* I know this is not the best way but considering how simple it is, 
@@ -50,7 +41,7 @@ namespace OpenEducator.ContentTypes {
             User = user;
             Slug = slug_hash;
             Title = title;
-            ThemeID = themeID;
+            ThemeId = themeID;
             Preview = waitBeforeLoading;
             Height = height;
         }
@@ -68,16 +59,16 @@ namespace OpenEducator.ContentTypes {
 
             */
 
-            return Wrap("p", "See The Pen <a href=\"http://codepen.io/team/codepen/pen/PNaGbb/\">Example Editable Embed</a>" , base.Style, base.Classes.Concat(new string[] { "codepen" }).ToArray(), base.ID, base.Open + " " + OpenMaker(new List<KeyValuePair<string, string>>() {
-                new KeyValuePair<string, string>("data-theme-id", ThemeID),
+            return Wrap("p", "See The Pen <a href=\"http://codepen.io/team/codepen/pen/PNaGbb/\">Example Editable Embed</a>" , Style, Classes.Concat(new[] { "codepen" }).ToArray(), ID, Open + " " + OpenMaker(new List<KeyValuePair<string, string>>() {
+                new KeyValuePair<string, string>("data-theme-id", ThemeId),
                 new KeyValuePair<string, string>("data-slug-hash", Slug),
-                new KeyValuePair<string, string>("data-default-tab", DefaultTabHTML),
+                new KeyValuePair<string, string>("data-default-tab", DefaultTabHtml),
                 new KeyValuePair<string, string>("data-user", User),
                 new KeyValuePair<string, string>("data-embed-version", "2"),
                 new KeyValuePair<string, string>("data-pen-title", Title),
                 new KeyValuePair<string, string>("data-preview", Preview ? "true" : "false"),
                 new KeyValuePair<string, string>("data-height", Height)
-            })) + Wrap("script", "", open: $"async src=\"https://production-assets.codepen.io/assets/embed/ei.js\"");
+            })) + Wrap("script", "", open: "async src=\"https://production-assets.codepen.io/assets/embed/ei.js\"");
         }
 
     }

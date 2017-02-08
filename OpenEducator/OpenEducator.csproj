@@ -226,19 +226,19 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DataProvider.cs" />
-    <Compile Include="App_Start\OpenEducator\Chapter.cs" />
-    <Compile Include="App_Start\OpenEducator\Content.cs" />
-    <Compile Include="App_Start\OpenEducator\ContentTypes\CodePenContent.cs" />
-    <Compile Include="App_Start\OpenEducator\ContentTypes\ConstructedHtmlContent.cs" />
-    <Compile Include="App_Start\OpenEducator\ContentTypes\ImageAsBackgroundContent.cs" />
-    <Compile Include="App_Start\OpenEducator\ContentTypes\ImageContent.cs" />
-    <Compile Include="App_Start\OpenEducator\ContentTypes\ListContent.cs" />
-    <Compile Include="App_Start\OpenEducator\ContentTypes\RawHtmlContent.cs" />
-    <Compile Include="App_Start\OpenEducator\ContentTypes\TextContent.cs" />
-    <Compile Include="App_Start\OpenEducator\Instructor.cs" />
-    <Compile Include="App_Start\OpenEducator\Course.cs" />
-    <Compile Include="App_Start\OpenEducator\Page.cs" />
-    <Compile Include="App_Start\OpenEducator\Topic.cs" />
+    <Compile Include="Code\Chapter.cs" />
+    <Compile Include="Code\Content.cs" />
+    <Compile Include="Code\ContentTypes\CodePenContent.cs" />
+    <Compile Include="Code\ContentTypes\ConstructedHtmlContent.cs" />
+    <Compile Include="Code\ContentTypes\ImageAsBackgroundContent.cs" />
+    <Compile Include="Code\ContentTypes\ImageContent.cs" />
+    <Compile Include="Code\ContentTypes\ListContent.cs" />
+    <Compile Include="Code\ContentTypes\RawHtmlContent.cs" />
+    <Compile Include="Code\ContentTypes\TextContent.cs" />
+    <Compile Include="Code\Instructor.cs" />
+    <Compile Include="Code\Course.cs" />
+    <Compile Include="Code\Page.cs" />
+    <Compile Include="Code\Topic.cs" />
     <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CourseController.cs" />
@@ -251,7 +251,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\OpenEducator\ContentTypes\YoutubeVideoContent.cs" />
+    <Compile Include="Code\ContentTypes\YoutubeVideoContent.cs" />
     <Content Include="Content\contentStyles.css" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
@@ -304,9 +304,6 @@
     <Content Include="Views\Shared\_Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Dashboard\Test.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Course\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -320,13 +317,13 @@
     <Content Include="Views\Maker\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Maker\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Course\ViewCourse.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Maker\TempCreate.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
