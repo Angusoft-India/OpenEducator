@@ -4,9 +4,8 @@ OpenEducator is a self-hosted learning management system that allows you to crea
 -------
 # TODO
 1. WYSIWYG Editor for Courses. Currently only supports creation through C#.
-2. NoSQL integration/storage. Currently stores files as JSON on server. 
-3. Student enrollment/progress storage. 
-4. Design that is not absolutely horrible. 
+2. NoSQL integration/storage. Currently stores files as JSON on server.
+3. Authentication/ Backend. 
 
 ------
 ## What are Courses?
