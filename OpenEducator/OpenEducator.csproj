@@ -295,7 +295,8 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\Courses\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Courses\" />
     <Folder Include="Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
