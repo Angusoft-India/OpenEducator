@@ -3,11 +3,9 @@
     ViewBag.ContainerStyle = "padding: 20px;";
 }
 
-<h3> Current Directory - @AppDomain.CurrentDomain.BaseDirectory </h3>
-
 <ul>
     
-    @foreach (string dir in Directory.GetDirectories(AppDomain.CurrentDomain.BaseDirectory)) {
+    @foreach (string dir in Directory.GetDirectories(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin"))) {
         <li>@dir</li>
     }
     
