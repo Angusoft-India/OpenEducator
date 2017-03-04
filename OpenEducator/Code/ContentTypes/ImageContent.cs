@@ -9,7 +9,7 @@
         }
 
         public override string Render() {
-            return WrapSelfClosing("img", Style, Classes, ID, $@"src=""{Source}""");
+            return WrapSelfClosing("img", Style, Classes, ID, $@" src=""{Source}""");
         }
 
     }

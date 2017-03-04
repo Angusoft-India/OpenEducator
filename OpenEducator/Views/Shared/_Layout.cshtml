@@ -1,4 +1,4 @@
-﻿@using OpenEducator.App_Start;
+﻿@using OpenEducator;
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,19 @@
 <body>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/react")
-    
+
+    <!-- CONTENT TYPE DATA START -->
+    @if(ViewBag.IncludeScripts != null) {
+        @Scripts.Render(((List<string>) ViewBag.IncludeScripts).ToArray())
+    }
+
+    @if(ViewBag.IncludeStyles != null) {
+        foreach(string s in ViewBag.IncludeStyles) {
+            @Html.Raw($@"<link rel=""stylesheet"" href=""{s}"">")
+        }
+    }
+    <!-- CONTENT TYPE DATA END -->
+
     <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
         <button class="menu-icon" type="button" data-toggle></button>
         <div class="title-bar-title">@DataProvider.GetString("SiteTitle")</div>
@@ -31,12 +43,22 @@
         </div>
     </div>
 
-    
+
     <div class="container bg-dark @ViewBag.Classes" style="@ViewBag.ContainerStyle">
         @RenderBody()
     </div>
 
     @Scripts.Render("~/bundles/init")
     @RenderSection("scripts", required: false)
+
+    <!-- CONTENT TYPE ACTIVATORS START -->
+    @if(ViewBag.Activators != null || ViewBag.Activators?.Length > 0) {
+<script>
+    @foreach (string s in ViewBag.Activators) {@Html.Raw("    " + s)}
+    
+</script>
+    }
+    <!-- CONTENT TYPE ACTIVATORS END-->
+
 </body>
 </html>

@@ -20,6 +20,10 @@ namespace OpenEducator.Controllers
             } catch {
                 return HttpNotFound("Invalid Course, Chapter, Topic, or Page ID.");
             }
+
+            if (!Course.Exists(ViewBag.ID)) {
+                return HttpNotFound($"We have lots of courses and stuff but one with ID {id} does not exist.");
+            }
             
             return View();
         }

@@ -3,20 +3,29 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace OpenEducator.Code {
 
     public abstract class Content: ICanJsonSerialized {
 
-        public string[] Classes { get; set; } = new string[] { };
-        public string ID { get; set; } = "";
-        public string Style { get; set; } = "";
+        public string[] Classes { get; set; }
+        public string ID { get; set; }
+        public string Style { get; set; }
         /// <summary>
         /// Put directly inside tag
         /// </summary>
-        public string Open { get; set; } = "";
-        public string[] xContentClasses { get; set; } = new string[] { };
-        public string xContentStyle { get; set; } = "";
+        public string Open { get; set; }
+        public string[] xContentClasses { get; set; }
+        public string xContentStyle { get; set; }
+
+        public string[] IncludeScripts { get; set; }
+        public string[] IncludeStylesheets { get; set; }
+        public string Activators { get; set; }
+        
+        [JsonIgnore]
+        public string TypeShortName => GetType().Name.Replace("Content", "");
 
         public abstract string Render();
 
@@ -63,11 +72,16 @@ namespace OpenEducator.Code {
                 $@"/{domElement}>";
         }
 
-        public static string OpenMaker(List<KeyValuePair<string,string>> l_kvp) {
+        /// <summary>
+        /// Creates a string from a list of properties that can be put inside an HTML tag
+        /// </summary>
+        /// <param name="lKvp"></param>
+        /// <returns></returns>
+        public static string OpenMaker(List<KeyValuePair<string,string>> lKvp) {
             string _open = "";
             List<KeyValuePair<string, string>> Inserted = new List<KeyValuePair<string, string>>();
 
-            foreach(var kvp in l_kvp) {
+            foreach(var kvp in lKvp) {
                 if(!Inserted.Contains(kvp)) {
                     _open += $@" {kvp.Key}" + (string.IsNullOrWhiteSpace(kvp.Value) ? "" : $"=\"{kvp.Value}\"");
                     Inserted.Add(kvp);
@@ -76,28 +90,7 @@ namespace OpenEducator.Code {
 
             return _open;
         }
+    
     }
-
-    //Not using this but keep it for some reason.
-    public class ContentConverter: JsonConverter {
-
-        public override bool CanConvert(Type objectType) {
-            return (objectType.BaseType == typeof(Content));
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
-            JObject jo = JObject.Load(reader);
-            Type t = Type.GetType(jo["ContentType"].Value<string>());
-
-            dynamic dt = jo.ToObject(t);
-
-            return dt;
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
-            string jsonData = JsonConvert.SerializeObject(value, writer.Formatting);
-            File.WriteAllText(writer.Path, jsonData);
-        }
-    }
-
+    
 }

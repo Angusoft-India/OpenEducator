@@ -8,6 +8,10 @@ namespace OpenEducator.Controllers
             ViewBag.Title = "Dashboard";
             return View();
         }
-        
+
+        public ActionResult Test() {
+            ViewBag.Title = "Test";
+            return View();
+        }
     }
 }

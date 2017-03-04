@@ -1,0 +1,190 @@
+{
+  "$type": "OpenEducator.Code.Course, OpenEducator",
+  "CoursePath": "I:\\Gits\\OpenEducator\\OpenEducator\\Courses\\13370.json",
+  "Name": "Introduction To Web Development",
+  "ID": 13370,
+  "Description": null,
+  "Contents": [
+    {
+      "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
+      "Tag": 6,
+      "Text": "Web development is a broad term for the work involved in developing a web site for the Internet (World Wide Web) or an intranet (a private network). Web development can range from developing the simplest static single page of plain text to the most complex web-based internet applications, electronic businesses, and social network services. A more comprehensive list of tasks to which web development commonly refers, may include web engineering, web design, web content development, client liaison, client-side/server-side scripting, web server and network security configuration, and e-commerce development. Among web professionals, \"web development\" usually refers to the main non-design aspects of building web sites: writing markup and coding.",
+      "Classes": null,
+      "ID": null,
+      "Style": null,
+      "Open": null,
+      "xContentClasses": null,
+      "xContentStyle": null,
+      "IncludeScripts": null,
+      "IncludeStylesheets": null,
+      "Activators": null
+    },
+    {
+      "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
+      "Tag": 6,
+      "Text": "In this course, we are going to learn how to create a website using:- ",
+      "Classes": null,
+      "ID": null,
+      "Style": null,
+      "Open": null,
+      "xContentClasses": null,
+      "xContentStyle": null,
+      "IncludeScripts": null,
+      "IncludeStylesheets": null,
+      "Activators": null
+    },
+    {
+      "$type": "OpenEducator.Code.ContentTypes.ListContent, OpenEducator",
+      "Items": [
+        {
+          "$type": "OpenEducator.Code.ContentTypes.RawHtmlContent, OpenEducator",
+          "Data": "<strong>HTML</strong> - Hyper Text Markup Language",
+          "Classes": null,
+          "ID": null,
+          "Style": null,
+          "Open": null,
+          "xContentClasses": null,
+          "xContentStyle": null,
+          "IncludeScripts": null,
+          "IncludeStylesheets": null,
+          "Activators": null
+        },
+        {
+          "$type": "OpenEducator.Code.ContentTypes.RawHtmlContent, OpenEducator",
+          "Data": "<strong>CSS</strong> - Cascading Style Sheets",
+          "Classes": null,
+          "ID": null,
+          "Style": null,
+          "Open": null,
+          "xContentClasses": null,
+          "xContentStyle": null,
+          "IncludeScripts": null,
+          "IncludeStylesheets": null,
+          "Activators": null
+        },
+        {
+          "$type": "OpenEducator.Code.ContentTypes.RawHtmlContent, OpenEducator",
+          "Data": "<strong>JavaScript</strong>",
+          "Classes": null,
+          "ID": null,
+          "Style": null,
+          "Open": null,
+          "xContentClasses": null,
+          "xContentStyle": null,
+          "IncludeScripts": null,
+          "IncludeStylesheets": null,
+          "Activators": null
+        },
+        {
+          "$type": "OpenEducator.Code.ContentTypes.RawHtmlContent, OpenEducator",
+          "Data": "<strong>PHP</strong> - Hypertext Preprocessor (earlier called, Personal Home Page)",
+          "Classes": null,
+          "ID": null,
+          "Style": null,
+          "Open": null,
+          "xContentClasses": null,
+          "xContentStyle": null,
+          "IncludeScripts": null,
+          "IncludeStylesheets": null,
+          "Activators": null
+        }
+      ],
+      "ItemClasses": null,
+      "Unordered": false,
+      "Classes": null,
+      "ID": null,
+      "Style": null,
+      "Open": null,
+      "xContentClasses": null,
+      "xContentStyle": null,
+      "IncludeScripts": null,
+      "IncludeStylesheets": null,
+      "Activators": null
+    },
+    {
+      "$type": "OpenEducator.Code.ContentTypes.SyntaxHighlightedContent, OpenEducator",
+      "Language": 2,
+      "Text": "using System;\r\n\r\n#pragma warning disable 414, 3021\r\n\r\n/// <summary>Main task</summary>\r\nasync Task<int, int> AccessTheWebAsync()\r\n{\r\n    Console.WriteLine(\"Hello, World!\");\r\n    string urlContents = await getStringTask;\r\n    return urlContents.Length;\r\n}\r\n",
+      "Classes": null,
+      "ID": null,
+      "Style": null,
+      "Open": null,
+      "xContentClasses": null,
+      "xContentStyle": null,
+      "IncludeScripts": [
+        "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"
+      ],
+      "IncludeStylesheets": [
+        "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css"
+      ],
+      "Activators": "hljs.initHighlightingOnLoad();"
+    }
+  ],
+  "SnapshotUrl": null,
+  "YoutubeVideoID": null,
+  "Author": "University of Aryan",
+  "Instructors": [
+    {
+      "$type": "OpenEducator.Code.Instructor, OpenEducator",
+      "Name": "Aryan Mann",
+      "ID": 1337
+    }
+  ],
+  "Chapters": [
+    {
+      "$type": "OpenEducator.Code.Chapter, OpenEducator",
+      "Name": "Overview",
+      "Description": null,
+      "Contents": [
+        {
+          "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
+          "Tag": 6,
+          "Text": "Before we dive into writing code, we must understand how different parts (HTML, CSS, JS, etc.) interact with each other to form our webpage.",
+          "Classes": null,
+          "ID": null,
+          "Style": null,
+          "Open": null,
+          "xContentClasses": null,
+          "xContentStyle": null,
+          "IncludeScripts": null,
+          "IncludeStylesheets": null,
+          "Activators": null
+        },
+        {
+          "$type": "OpenEducator.Code.ContentTypes.CodePenContent, OpenEducator",
+          "Title": "HTML, CSS, JS Interaction Example",
+          "User": "aryan-mann",
+          "Slug": "NdzeeK",
+          "ThemeId": "dark",
+          "Height": "600",
+          "Preview": false,
+          "DefaultTab": 3,
+          "Classes": null,
+          "ID": null,
+          "Style": null,
+          "Open": null,
+          "xContentClasses": null,
+          "xContentStyle": null,
+          "IncludeScripts": null,
+          "IncludeStylesheets": null,
+          "Activators": null
+        },
+        {
+          "$type": "OpenEducator.Code.ContentTypes.TextContent, OpenEducator",
+          "Tag": 6,
+          "Text": "On the top-left are three tabs: HTML, CSS, and JS.",
+          "Classes": null,
+          "ID": null,
+          "Style": null,
+          "Open": null,
+          "xContentClasses": null,
+          "xContentStyle": null,
+          "IncludeScripts": null,
+          "IncludeStylesheets": null,
+          "Activators": null
+        }
+      ],
+      "Topics": []
+    }
+  ]
+}

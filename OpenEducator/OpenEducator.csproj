@@ -234,6 +234,8 @@
     <Compile Include="Code\ContentTypes\ImageContent.cs" />
     <Compile Include="Code\ContentTypes\ListContent.cs" />
     <Compile Include="Code\ContentTypes\RawHtmlContent.cs" />
+    <Compile Include="Code\ContentTypes\ResourceLinksContent.cs" />
+    <Compile Include="Code\ContentTypes\SyntaxHighlightedContent.cs" />
     <Compile Include="Code\ContentTypes\TextContent.cs" />
     <Compile Include="Code\Instructor.cs" />
     <Compile Include="Code\Course.cs" />
@@ -295,6 +297,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Courses\" />
+    <Folder Include="Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -324,6 +327,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Maker\TempCreate.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Dashboard\Test.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

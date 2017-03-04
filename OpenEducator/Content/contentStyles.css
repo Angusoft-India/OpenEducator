@@ -21,4 +21,18 @@ p.TextContent-Text {
 iframe.YoutubeVideoFrame {
     border: 0;
     box-shadow: none;
+    width: 100%
+} 
+
+/* Resource Links */
+ul.resource-list {
+    list-style-type: decimal;
+}
+ul.resource-list li {
+    width: 100%;
+}
+
+/* Syntax Highlighter */
+pre.syntax-highlighter {
+    width: 100%;
 }

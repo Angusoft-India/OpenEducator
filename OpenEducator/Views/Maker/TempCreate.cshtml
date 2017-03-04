@@ -1,10 +1,56 @@
 ﻿@using OpenEducator.Code
 @using OpenEducator.Code.ContentTypes
+@using Page = OpenEducator.Code.Page
 
 @{ 
     ViewBag.Title = "Saving";
 
-    Course crs = new Course() {
+    Course webCourse = new Course() {
+        Name = "Introduction To Web Development",
+        Author = "University of Aryan",
+        Instructors = new List<Instructor>() {
+            new Instructor() {
+                Name = "Aryan Mann",
+                ID = 1337
+            }
+        },
+        ID = 13370,
+        Contents = new List<Content>() {
+            new TextContent(@"Web development is a broad term for the work involved in developing a web site for the Internet (World Wide Web) or an intranet (a private network). Web development can range from developing the simplest static single page of plain text to the most complex web-based internet applications, electronic businesses, and social network services. A more comprehensive list of tasks to which web development commonly refers, may include web engineering, web design, web content development, client liaison, client-side/server-side scripting, web server and network security configuration, and e-commerce development. Among web professionals, ""web development"" usually refers to the main non-design aspects of building web sites: writing markup and coding."),
+            new TextContent("In this course, we are going to learn how to create a website using:- "),
+            new ListContent(new List<Content>() {
+                new RawHtmlContent(@"<strong>HTML</strong> - Hyper Text Markup Language"),
+                new RawHtmlContent(@"<strong>CSS</strong> - Cascading Style Sheets"),
+                new RawHtmlContent(@"<strong>JavaScript</strong>"),
+                new RawHtmlContent(@"<strong>PHP</strong> - Hypertext Preprocessor (earlier called, Personal Home Page)")
+            }, false),
+            new SyntaxHighlightedContent(@"using System;
+
+#pragma warning disable 414, 3021
+
+/// <summary>Main task</summary>
+async Task<int, int> AccessTheWebAsync()
+{
+    Console.WriteLine(""Hello, World!"");
+    string urlContents = await getStringTask;
+    return urlContents.Length;
+}
+", SyntaxHighlightedContent.Languages.CSharp)
+        },
+        Chapters = new List<Chapter>() {
+            new Chapter() {
+                Name = "Overview",
+                Contents = new List<Content>() {
+                    new TextContent("Before we dive into writing code, we must understand how different parts (HTML, CSS, JS, etc.) interact with each other to form our webpage."),
+                    new CodePenContent("aryan-mann", "NdzeeK", "HTML, CSS, JS Interaction Example") {
+                        Height = "600"
+                    },
+                    new TextContent("On the top-left are three tabs: HTML, CSS, and JS.")
+                }
+            }
+        }
+    };
+    Course satCourse = new Course() {
         Name = "US College Applications",
         Author = "Aryan Mann",
         Description = "The application process can be confusing, lengthy, and expensive. Learn how to most efficiently complete it.",
@@ -12,75 +58,172 @@
         Instructors = new List<Instructor>() { new Instructor() { Name = "Aryan Mann", ID = 1337 } },
         ID = 10001,
         Contents = new List<Content>() {
-            new TextContent("Welcome college applicants!", TextContent.TextType.H1),
-            new ImageAsBackgroundContent("https://aos.iacpublishinglabs.com/question/aq/700px-394px/students-pose-for-their-official-group-photograph-at-the-news-photo_51a7b5c4bc2683f5.jpg?domain=cx.aos.ask.com"){
-                Style = "width: 100%; height: 394px;",
-                xContentClasses = new[]{ "h-nopad" }
-            },
-            new TextContent("Before we begin, what do colleges really look for in an applicant?"){
-                Classes = new[] { "v-nopad" }
-            },
+            new TextContent("Applying to universities can be confusing, daunting, and expensive. This guide won't just teach you how and when to apply, but how to actually get accepted into your dream school(s). We will go over:- "),
             new ListContent(new List<Content>() {
-                new TextContent("Strong Academics"),
-                new TextContent("Rigorous Courses"),
-                new TextContent("High Standardized Testing Scores"),
-                new TextContent("Well Written Essays"),
-                new TextContent("Awards and Acheivements"),
-                new TextContent("Extracurricular Activities"),
-                new TextContent("Authenticity and Passion")
+                new RawHtmlContent("Common Application"),
+                new RawHtmlContent("Highschool Requirements"),
+                new RawHtmlContent("Standardized Testing"),
+                new RawHtmlContent("What Colleges Look For"),
+                new RawHtmlContent("Essays"),
+                new RawHtmlContent("Financial Aid"),
+                new RawHtmlContent("Tips and Tricks")
             }, false),
-            new TextContent("The best colleges require you to possess all these qualities, the rest will overlook one or two weak areas. In this course, we will go over the importance of these qualities while simultaneously guiding you through the process of applying to university."),
+            new TextContent("So let's get started!")
         },
         Chapters = new List<Chapter>() {
             new Chapter() {
-                Name = "Preperation",
-                Description = "What do you need to do before starting your application process.",
+                Name = "Common Application",
+                Description = "An in-depth guide to the Common Application",
                 Contents = new List<Content>() {
-                    new TextContent("A complete application requires six things:- "),
+                    new TextContent("At the heart of the applications process is an online application form - the Common Application. While few colleges such as MIT, Penn State, and University of Texas have their own external applications, most colleges use the CommonApp. Thus, we are going to cover it extensively."),
+                    new ResourceLinksContent(new Dictionary<string, string>() {
+                        [@"https://apply.commonapp.org/Login"] = "CommonApp Login/Registration",
+                        [@"https://appsupport.commonapp.org/ics/support/default.asp?deptID=33013"] = "CommonApp Application Help Center",
+                        [@"http://www.commonapp.org/application-dictionary"] = "CommonApp Glossary"
+                    }, "Useful Links:- "),
+                    new TextContent("The CommonApp consists of five primary sections:- "),
                     new ListContent(new List<Content>() {
-                        new TextContent("Standardized Tests - SAT or ACT"),
-                        new TextContent("Special Standardized Tests - SAT Subject Tests (Only required by top colleges)"),
-                        new TextContent("Essays"),
-                        new TextContent("Letter(s) of Recommendation (Required by top colleges)"),
-                        new TextContent("Highschool Transcripts"),
-                        new TextContent("Financial Aid - CSS Profile or FAFSA (only domestic)")
-                    })
+                        new RawHtmlContent("Dashboard"),
+                        new RawHtmlContent("My Colleges"),
+                        new RawHtmlContent("Common App"),
+                        new RawHtmlContent("College Search"),
+                        new RawHtmlContent("Financial Aid Resources")
+                    }),
+                    new TextContent("We will go through all of them in detail.")
                 },
                 Topics = new List<Topic>() {
                     new Topic() {
-                        Name = "What to do in highschool?",
+                        Name = "Dashboard",
                         Contents = new List<Content>() {
-                            new TextContent("Umm..")
+                            new ImageAsBackgroundContent("http://info.getintocollege.com/hs-fs/hub/146790/file-3596333357-png/images/2015_new_common_app_17.png"),
+                            new TextContent("The Dashboard screen contains basic information of all the collegs you are applying to or already have applied to. It shows the status of your application for each college. There are three key components:- "),
+                            new ListContent(new List<Content>() {
+                                   new TextContent("Deadline - The deadline is 11:59pm of your time zone."),
+                                   new TextContent("Application - College specific information (sometimes includes essays)."),
+                                   new TextContent("Writing Supplment - Few colleges prefer to have their essays outside of the basic application.")
+                            }, false),
+                            new TextContent("Though you can submit the Application first and the Writing Supplment later, the final deadline is the same for both. Some colleges prefer to seperate essays into Writing Supplment, most do not. "),
+                            new TextContent("Green checkmark means submitted, Red dash means not required, and Yellow dot means not submitted yet."),
+                            new TextContent("Finally, you can only add a maximum of twenty colleges to the CommonApp.")
                         },
-                        Pages = new List<OpenEducator.Code.Page>() {
-                            new OpenEducator.Code.Page() {
-                                Name = "I did not think this through.",
+                        Pages = new List<Page>() {
+                            new Page() {
+                                Name = "Test Page A",
                                 Contents = new List<Content>() {
-                                    new YoutubeVideoContent("ufK2Stdsrtw") {
-                                        xContentStyle = "justify-content: center;",
-                                        Style = "min-height: 400px;",
-                                        Classes = new []{ "YoutubeVideoFrame" }
-                                    }
+                                     new TextContent("One Testicle")
+                                }
+                            },
+                            new Page() {
+                                Name = "Test Page B",
+                                Contents = new List<Content>() {
+                                     new TextContent("Two Testicles")
+                                }
+                            },
+                            new Page() {
+                                Name = "Test Page C",
+                                Contents = new List<Content>() {
+                                     new TextContent("Three Testicles")
                                 }
                             }
+                        }
+                    },
+                    new Topic() {
+                        Name = "My Colleges",
+                        Contents = new List<Content>() {
+                            new TextContent("The 'My Colleges' tab is essentially used to edit your application to a college."),
+                            new ImageAsBackgroundContent("http://info.getintocollege.com/hs-fs/hub/146790/file-1397922199-png/images/common-app-13.png"),
+                            new TextContent("The 'Questions' tab usually has college specific questions such as major, activities, and essays. We talk more about the Recommenders and FERPA tab in the Highschool Transcripts chapter.")
+                        }
+                    },
+                    new Topic() {
+                        Name = "Common App",
+                        Contents = new List<Content>() {
+                            new TextContent("The Common App provides brief information on all your test scores, achievements, extra-curiccular activities, and personal information to each and every college you apply to. It has six sections:-"),
+                            new ListContent(new List<Content>() {
+                                new RawHtmlContent("<strong>Profile</strong> - Personal information such as Name, Sex, Address, Contact Details, Citizenship, Nationality, etc."),
+                                new RawHtmlContent("<strong>Family</strong> - Name, Education, Employment, etc. of your parents and siblings, if any."),
+                                new RawHtmlContent("<strong>Education</strong> - School, Class Rank/Size, Colleges Attended, Interruptions, Academic Honors, etc."),
+                                new RawHtmlContent("<strong>Testing</strong> - Self reported test scores for the SAT, ACT, Subject Tests, TOEFL, National Examinations, etc."),
+                                new RawHtmlContent("<strong>Activities</strong> - Extra-curricular activities such as clubs, jobs, volunteering, personal pursuits, etc."),
+                                new RawHtmlContent("<strong>Writing</strong> - An essay on a chosen topic that will be sent to every school you apply to. Make it count!")
+                            }, false),
+                            new TextContent("Lets go through all these sections.")
                         }
                     }
                 }
             },
             new Chapter() {
-                Name = "Applying",
-                Description = "Tackling applications."
+                Name = @"Highschool Requirements",
+                Contents = new List<Content>() {
+                    new TextContent("Your school needs to be involved in your admissions process. Through the CommonApp, you have to send an invitation to your school's counsellor so they can upload relevant academic documents. In addition, some colleges require letter of recommendation from one or more teachers. Thus, you would need to invite those teachers through the CommonApp too."),
+                    new TextContent("While you can only have one counselor, you can have many teachers who provide you a letter of recommendation. Once the teacher uploads the document, you have to assign them to each college manually."),
+                    new TextContent("Your counselor needs to upload these documents:- "),
+                    new ListContent(new List<Content>() {
+                        new RawHtmlContent("<strong>Transcripts</strong> - Your marksheet/grades for your last four years of school i.e. highschool"),
+                        new RawHtmlContent("<strong>Counselors Recommendation</strong>"),
+                        new RawHtmlContent("<strong>School Profile</strong> - Information about your school")
+                    })
+                }
             },
             new Chapter() {
-                Name = "Matriculating",
-                Description = "What to do after getting admitted."
+                Name = @"Standardized Testing",
+                Contents = new List<Content>() {
+                    new TextContent("Colleges accept both tests equally, so the choice is up to you! The ACT and SAT generally test the same types of content. The biggest differences are that the ACT has a Science Test and the SAT has one Math section for which you cannot use a calculator."),
+                    new TextContent("The best way to decide which test is right for you is to take a timed full-length practice test in each. Since the content and style of the SAT and ACT are very similar, factors like how you handle time pressure and what types of questions you find most challenging can help you determine which test is a better fit. For example, the pace of the SAT gives you a tad more time to think through problems, while the ACT can be more of a time crunch. Some students really thrive under the pressure of the clock, while others prefer the extra time to ponder a question."),
+                    new ResourceLinksContent(new Dictionary<string, string>() {
+                        ["https://www.khanacademy.org/test-prep/sat/full-length-sat-1/online-sat-tests/a/full-length-sats-to-take-online"] = "SAT",
+                        ["http://cdn2.hubspot.net/hubfs/360031/ACT-2015-16.pdf?t=1486703188572"] = "ACT"
+                    }, "Practice Tests:- "),
+                    new TextContent("SAT Subject Tests are 20 multiple-choice standardized tests given by The College Board on individual subjects, usually taken to improve a student's credentials. Most top colleges require two or more Subject Tests, see their requirements for more information. Here's a list of all Subject Tests:- "),
+                    new ListContent(new List<Content>() {
+                        new RawHtmlContent("<strong>Literature </strong"),
+                        new RawHtmlContent("<strong>United States History </strong"),
+                        new RawHtmlContent("<strong>World History </strong"),
+                        new RawHtmlContent("<strong>Mathematics Level 1 </strong"),
+                        new RawHtmlContent("<strong>Mathematics Level 2 </strong"),
+                        new RawHtmlContent("<strong>Biology E/M </strong"),
+                        new RawHtmlContent("<strong>Chemistry </strong"),
+                        new RawHtmlContent("<strong>Physics </strong"),
+                        new RawHtmlContent("<strong>Chinese with Listening </strong"),
+                        new RawHtmlContent("<strong>French </strong"),
+                        new RawHtmlContent("<strong>French with Listening </strong"),
+                        new RawHtmlContent("<strong>German </strong"),
+                        new RawHtmlContent("<strong>German with Listening </strong"),
+                        new RawHtmlContent("<strong>Modern Hebrew </strong"),
+                        new RawHtmlContent("<strong>Italian </strong"),
+                        new RawHtmlContent("<strong>Japanese with Listening </strong"),
+                        new RawHtmlContent("<strong>Korean with Listening </strong"),
+                        new RawHtmlContent("<strong>Latin </strong"),
+                        new RawHtmlContent("<strong>Spanish </strong")
+                    }),
+                    new TextContent("Subject Tests are scored out of 800 and the value of your score is dependent on which Subject Test you take. For example, a 750 on Literature is much better than a 750 on Math 2.")
+                },
+                Topics = new List<Topic>() {
+                    new Topic() {
+                        Name = "SAT Preperation",
+                        Contents = new List<Content>() {
+                            new ResourceLinksContent(new Dictionary<string, string>() {
+                                ["https://www.khanacademy.org/test-prep/sat"] = "Full Course",
+                                ["http://www.cracksat.net/"] = "Individual Tests",
+                                ["http://thecriticalreader.com/shop/the-ultimate-guide-to-sat-grammar/"] = "SAT Grammar",
+                                ["http://thecriticalreader.com/shop/the-critical-reader/"] = "SAT Critical Reading",
+                                ["https://www.amazon.com/Problems-arranged-Topic-Difficulty-Level/dp/1511878185"] = "SAT Math"
+                            })
+                        }
+                    }
+                }
             }
         }
     };
 
-    crs.Save();
+    //satCourse.Save();
+    //satCourse.Save();
 }
 
-<h1 style="color: white;" class="double-padded s-padded">Saved @crs.Name!</h1>
+<script>
 
-@{Response.Redirect("/Course/10001");}
+    var contentTypeData = JSON.parse("@Html.Raw(HttpUtility.JavaScriptStringEncode(Content.GetTypeData()))");
+    console.log(contentTypeData);
+
+</script>
+

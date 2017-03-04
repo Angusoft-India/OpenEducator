@@ -1,12 +1,25 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
-namespace OpenEducator.App_Start
+namespace OpenEducator
 {
-    public static class DataProvider
-    {
-        // STRINGS
+    public static class DataProvider {
+
+        private static string SaveDirectory => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+
+        public static void Save() {
+            SaveLocal(StringsData);
+            SaveLocal(PredefinedMenus);
+        }
+        public static void Load() {
+            LoadLocal(out StringsData);
+            LoadLocal(out PredefinedMenus);
+        }
+
+        // - Strings
         private static Dictionary<string, string> StringsData = new Dictionary<string, string>() {
             #region Hardcoded Strings
             ["SiteTitle"] = "OpenEducator",
@@ -20,7 +33,7 @@ namespace OpenEducator.App_Start
             else return default(string);
         }
 
-        // MENUS
+        // - Menus
         public struct Menu {
             public Dictionary<string, string> Links { get; set; }
         }
@@ -28,7 +41,8 @@ namespace OpenEducator.App_Start
             #region Hardcoded Menus
             ["TopBar"] = new Menu() { Links = new Dictionary<string, string>() {
                 ["Dashboard"] = "/Dashboard", ["Courses"] = "/Course", ["Maker"] = "/Maker",
-                ["Temp Course Saver"] = "/Maker/TempCreate", ["College App Course"] = "/Course/10001"
+                ["Temp Course Saver"] = "/Maker/TempCreate", ["College App Course"] = "/Course/10001",
+                ["Test"] = "/Dashboard/Test"
             }}
             #endregion
         };
@@ -37,9 +51,15 @@ namespace OpenEducator.App_Start
             else { return new Menu() { Links = new Dictionary<string, string>() }; }
         }
         
-        // JSON ENCODE
-        public static string JsonEncode(object obj) {
-            return JsonConvert.SerializeObject(obj);
+        // <-> JSON ENCODE
+        private static void SaveLocal<T>(T thing) {
+            string data = JsonConvert.SerializeObject(thing);
+            File.WriteAllText(Path.Combine(SaveDirectory, typeof(T).FullName), data);
+        }
+
+        private static void LoadLocal<T>(out T thing) {
+            string data = File.ReadAllText(Path.Combine(SaveDirectory, typeof(T).FullName));
+            thing = JsonConvert.DeserializeObject<T>(data);
         }
         
     }

@@ -1,7 +1,8 @@
 ﻿@using OpenEducator.Code
+@using Page = OpenEducator.Code.Page
 
 @{
-    ViewBag.Title = "ViewCourse";
+    ViewBag.Title = "View Course";
 
     int courseId = ViewBag.ID;
     int chapterId = ViewBag.Chapter;
@@ -13,7 +14,7 @@
     <h1 class="padded" style="color: white;">Course with ID @courseId does not exist.</h1>
     return;
 }
-
+    
 @{
     Course crs = Course.GetFromId(courseId);
     bool showCourse = false, showChapter = false, showTopic = false, showPage = false;
@@ -21,12 +22,16 @@
     //check if the user is requesting the course, a chapter, a topic, or a page
     if(chapterId <= -1 || chapterId >= crs.Chapters.Count) {
         showCourse = true;
+        ViewBag.Title = crs.Name;
     } else if(topicId <= -1 || topicId >= crs.Chapters[chapterId].Topics.Count) {
         showChapter = true;
+        ViewBag.Title = crs.Chapters[chapterId].Name;
     } else if(pageId <= -1 || pageId >= crs.Chapters[chapterId].Topics[topicId].Pages.Count) {
         showTopic = true;
+        ViewBag.Title = crs.Chapters[chapterId].Topics[topicId].Name;
     } else {
         showPage = true;
+        ViewBag.Title = crs.Chapters[chapterId].Topics[topicId].Name + " Pages";
     }
 
 }
@@ -58,10 +63,10 @@
                 foreach(OpenEducator.Code.Page p in crs.Chapters[chapterId].Topics[topicId].Pages) {
                     links.Add(new KeyValuePair<string, string>($"/Course/{crs.ID}/{chapterId}/{topicId}/{crs.Chapters[chapterId].Topics[topicId].Pages.IndexOf(p)}", $"{p.Name}"));
                 }
-            }
-            else {
+            } else {
                 toShow = crs.Chapters[chapterId].Topics[topicId].Pages[pageId].Contents;
-                title = crs.Chapters[chapterId].Topics[topicId].Pages[pageId].Name;
+                //title = crs.Chapters[chapterId].Topics[topicId].Pages[pageId].Name;
+                title = crs.Chapters[chapterId].Topics[topicId].Name;
                 foreach(OpenEducator.Code.Page p in crs.Chapters[chapterId].Topics[topicId].Pages) {
                     links.Add(new KeyValuePair<string, string>($"/Course/{crs.ID}/{chapterId}/{topicId}/{crs.Chapters[chapterId].Topics[topicId].Pages.IndexOf(p)}", $"{p.Name}"));
                 }
@@ -93,30 +98,94 @@
 
         <h1 class="xPageTitle">@title</h1>
 
-        <div class="xContent">
-            @{ toShow = toShow ?? new List<Content>(); }
-            @foreach(Content c in toShow) {
-                var xClass = (c.xContentClasses.Length > 0) ? "xContentItem " + string.Join(" ", c.xContentClasses) : "xContentItem";
-                var xStyle = (!string.IsNullOrWhiteSpace(c.xContentStyle)) ? "style=\"" + c.xContentStyle + "\"" : "";
 
-                <div class="@xClass" @Html.Raw(xStyle)>
-                    @Html.Raw(c.Render())
-                </div>
+        <div class="xContent">
+            @{
+                toShow = toShow ?? new List<Content>();
+                List<string> includeScripts = new List<string>();
+                List<string> includeStyles = new List<string>();
+                List<string> activators = new List<string>();
+
+
+                if(!showPage) {
+                    foreach(Content c in toShow) {
+
+                        if(c.IncludeScripts?.Length > 0) {
+                            includeScripts = includeScripts.Concat(c.IncludeScripts).ToList();
+                        }
+                        if(c.IncludeStylesheets?.Length > 0) {
+                            includeStyles = includeStyles.Concat(c.IncludeStylesheets).ToList();
+                        }
+                        if(!string.IsNullOrWhiteSpace(c.Activators)) {
+                            activators.Add(c.Activators);
+                        }
+
+                        var xClass = (c.xContentClasses?.Length > 0) ? "xContentItem " + string.Join(" ", c.xContentClasses) : "xContentItem";
+                        var xStyle = (!string.IsNullOrWhiteSpace(c.xContentStyle)) ? "style=\"" + c.xContentStyle + "\"" : "";
+
+                        <div class="@xClass" name="@c.TypeShortName" @Html.Raw(xStyle)>
+                            @Html.Raw(c.Render())
+                        </div>
+                    }
+                } else {
+                    <div class="tabs-content" data-tabs-content="example-tabs">
+                        @{
+                            List<OpenEducator.Code.Page>
+
+                                pages = crs.Chapters[chapterId].Topics[topicId].Pages;
+                        }
+                        <ul class="tabs" data-tabs id="page-tabs">
+                            @for(int i = 0; i < pages.Count; i++) {
+                                <li class="tabs-title@(i==pageId ? " is-active" : "")"><a href="#panel@(i+1)">@pages[i].Name</a></li>
+                            }
+                        </ul>
+                        <div class="tabs-content vertical" data-tabs-content="page-tabs">
+                            @for(int i = 0; i < pages.Count; i++) {
+                                <div class="tabs-panel@(i==pageId ? " is-active" : "")" id="panel@(i+1)">
+                                    @foreach(Content cnt in pages[i].Contents) {
+
+                                        if (cnt.IncludeScripts?.Length > 0) {
+                                            includeScripts = includeScripts.Union(cnt.IncludeScripts).ToList();
+                                        }
+                                        if (cnt.IncludeStylesheets?.Length > 0) {
+                                            includeStyles = includeStyles.Union(cnt.IncludeStylesheets).ToList();
+                                        }
+
+                                        var xClass = (cnt.xContentClasses?.Length > 0) ? "xContentItem " + string.Join(" ", cnt.xContentClasses) : "xContentItem";
+                                        var xStyle = (!string.IsNullOrWhiteSpace(cnt.xContentStyle)) ? "style=\"" + cnt.xContentStyle + "\"" : "";
+                                        <div class="@xClass" name="@cnt.TypeShortName" @Html.Raw(xStyle)>
+                                            @Html.Raw(cnt.Render())
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                            }
+
+                            ViewBag.IncludeScripts = includeScripts;
+                            ViewBag.IncludeStyles = includeStyles;
+                            ViewBag.Activators = activators;
             }
         </div>
-        
-        @if (!showPage) {
-            <div class="xPageNav">
-                @foreach (KeyValuePair<string, string> kvp in links) {
-                    <div class="xPageNavItem">
-                        <a href="@kvp.Key">@kvp.Value</a>
-                    </div>
-                }
-            </div>
+
+        @if(!showPage && links.Count > 0) {
+
+            string navTitle = "";
+            navTitle = showCourse ? "Chapters" : showChapter ? "Topics" : "Pages";
+
+            <span class="xPageTitle">@navTitle</span>
+                <div class="xPageNav">
+                    @foreach(KeyValuePair<string, string> kvp in links) {
+                        <div class="xPageNavItem">
+                            <a href="@kvp.Key">@kvp.Value</a>
+                        </div>
+                    }
+                </div>
         }
 
         <div class="padded text-center">
-            <a class="button primary">Back to Course Overview</a>
+            <a class="button primary" href="/Course/@crs.ID">Course Overview</a>
         </div>
     </div>
 </div>
