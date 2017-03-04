@@ -31,6 +31,7 @@ namespace OpenEducator {
                 "~/Scripts/react/react-dom.js",
                 "~/Scripts/react/react-dom-server.js"
             ));
+
             
         }
     }
