@@ -2,3 +2,15 @@
     ViewBag.Title = "Dashboard";
     ViewBag.ContainerStyle = "padding: 20px;";
 }
+
+<h3> Current Directory - @Directory.GetCurrentDirectory() </h3>
+
+<ul>
+    
+    @foreach (string dir in Directory.GetDirectories(Directory.GetCurrentDirectory())) {
+        <li>@dir</li>
+    }
+    
+</ul>
+
+<h3>Root - @Directory.GetDirectoryRoot()</h3>
