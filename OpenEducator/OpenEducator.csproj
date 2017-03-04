@@ -226,21 +226,21 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DataProvider.cs" />
-    <Compile Include="App_Start\Code\Chapter.cs" />
-    <Compile Include="App_Start\Code\Content.cs" />
-    <Compile Include="App_Start\Code\ContentTypes\CodePenContent.cs" />
-    <Compile Include="App_Start\Code\ContentTypes\ConstructedHtmlContent.cs" />
-    <Compile Include="App_Start\Code\ContentTypes\ImageAsBackgroundContent.cs" />
-    <Compile Include="App_Start\Code\ContentTypes\ImageContent.cs" />
-    <Compile Include="App_Start\Code\ContentTypes\ListContent.cs" />
-    <Compile Include="App_Start\Code\ContentTypes\RawHtmlContent.cs" />
-    <Compile Include="App_Start\Code\ContentTypes\ResourceLinksContent.cs" />
-    <Compile Include="App_Start\Code\ContentTypes\SyntaxHighlightedContent.cs" />
-    <Compile Include="App_Start\Code\ContentTypes\TextContent.cs" />
-    <Compile Include="App_Start\Code\Instructor.cs" />
-    <Compile Include="App_Start\Code\Course.cs" />
-    <Compile Include="App_Start\Code\Page.cs" />
-    <Compile Include="App_Start\Code\Topic.cs" />
+    <Compile Include="Code\Chapter.cs" />
+    <Compile Include="Code\Content.cs" />
+    <Compile Include="Code\ContentTypes\CodePenContent.cs" />
+    <Compile Include="Code\ContentTypes\ConstructedHtmlContent.cs" />
+    <Compile Include="Code\ContentTypes\ImageAsBackgroundContent.cs" />
+    <Compile Include="Code\ContentTypes\ImageContent.cs" />
+    <Compile Include="Code\ContentTypes\ListContent.cs" />
+    <Compile Include="Code\ContentTypes\RawHtmlContent.cs" />
+    <Compile Include="Code\ContentTypes\ResourceLinksContent.cs" />
+    <Compile Include="Code\ContentTypes\SyntaxHighlightedContent.cs" />
+    <Compile Include="Code\ContentTypes\TextContent.cs" />
+    <Compile Include="Code\Instructor.cs" />
+    <Compile Include="Code\Course.cs" />
+    <Compile Include="Code\Page.cs" />
+    <Compile Include="Code\Topic.cs" />
     <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CourseController.cs" />
@@ -253,7 +253,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\Code\ContentTypes\YoutubeVideoContent.cs" />
+    <Compile Include="Code\ContentTypes\YoutubeVideoContent.cs" />
     <Content Include="Content\contentStyles.css" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
@@ -296,7 +296,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Courses\" />
     <Folder Include="Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -330,6 +329,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Dashboard\Test.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Courses\10001.json" />
+    <Content Include="Courses\13370.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
