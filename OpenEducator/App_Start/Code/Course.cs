@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Web;
 
 namespace OpenEducator.Code {
 
@@ -20,7 +21,7 @@ namespace OpenEducator.Code {
         /// <summary>
         /// Where all the courses are stored
         /// </summary>
-        public static string CourseDirectory => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Courses");
+        public static string CourseDirectory => HttpContext.Current.Server.MapPath("~/App_Data/Courses"); //Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Courses");
 
         /// <summary>
         /// Where the JSON of the course is stored

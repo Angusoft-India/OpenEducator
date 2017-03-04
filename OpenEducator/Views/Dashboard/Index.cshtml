@@ -2,11 +2,3 @@
     ViewBag.Title = "Dashboard";
     ViewBag.ContainerStyle = "padding: 20px;";
 }
-
-<ul>
-    
-    @foreach (string dir in Directory.GetDirectories(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin"))) {
-        <li>@dir</li>
-    }
-    
-</ul>
