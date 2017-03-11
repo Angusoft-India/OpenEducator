@@ -2,54 +2,8 @@
 @using OpenEducator.Code.ContentTypes
 @using Page = OpenEducator.Code.Page
 
-@{ 
+@{
     ViewBag.Title = "Saving";
-
-    Course webCourse = new Course() {
-        Name = "Introduction To Web Development",
-        Author = "University of Aryan",
-        Instructors = new List<Instructor>() {
-            new Instructor() {
-                Name = "Aryan Mann",
-                ID = 1337
-            }
-        },
-        ID = 13370,
-        Contents = new List<Content>() {
-            new TextContent(@"Web development is a broad term for the work involved in developing a web site for the Internet (World Wide Web) or an intranet (a private network). Web development can range from developing the simplest static single page of plain text to the most complex web-based internet applications, electronic businesses, and social network services. A more comprehensive list of tasks to which web development commonly refers, may include web engineering, web design, web content development, client liaison, client-side/server-side scripting, web server and network security configuration, and e-commerce development. Among web professionals, ""web development"" usually refers to the main non-design aspects of building web sites: writing markup and coding."),
-            new TextContent("In this course, we are going to learn how to create a website using:- "),
-            new ListContent(new List<Content>() {
-                new RawHtmlContent(@"<strong>HTML</strong> - Hyper Text Markup Language"),
-                new RawHtmlContent(@"<strong>CSS</strong> - Cascading Style Sheets"),
-                new RawHtmlContent(@"<strong>JavaScript</strong>"),
-                new RawHtmlContent(@"<strong>PHP</strong> - Hypertext Preprocessor (earlier called, Personal Home Page)")
-            }, false),
-            new SyntaxHighlightedContent(@"using System;
-
-#pragma warning disable 414, 3021
-
-/// <summary>Main task</summary>
-async Task<int, int> AccessTheWebAsync()
-{
-    Console.WriteLine(""Hello, World!"");
-    string urlContents = await getStringTask;
-    return urlContents.Length;
-}
-", SyntaxHighlightedContent.Languages.CSharp)
-        },
-        Chapters = new List<Chapter>() {
-            new Chapter() {
-                Name = "Overview",
-                Contents = new List<Content>() {
-                    new TextContent("Before we dive into writing code, we must understand how different parts (HTML, CSS, JS, etc.) interact with each other to form our webpage."),
-                    new CodePenContent("aryan-mann", "NdzeeK", "HTML, CSS, JS Interaction Example") {
-                        Height = "600"
-                    },
-                    new TextContent("On the top-left are three tabs: HTML, CSS, and JS.")
-                }
-            }
-        }
-    };
     Course satCourse = new Course() {
         Name = "US College Applications",
         Author = "Aryan Mann",
@@ -215,15 +169,9 @@ async Task<int, int> AccessTheWebAsync()
             }
         }
     };
-
     //satCourse.Save();
-    //satCourse.Save();
+    
+    <!-- WEB DEVELOPMENT COURSE -->
+    Course webCourse = Course.Current;
+    webCourse.Save();
 }
-
-<script>
-
-    var contentTypeData = JSON.parse("@Html.Raw(HttpUtility.JavaScriptStringEncode(Content.GetTypeData()))");
-    console.log(contentTypeData);
-
-</script>
-

@@ -40,9 +40,8 @@ namespace OpenEducator
         private static Dictionary<string, Menu> PredefinedMenus = new Dictionary<string, Menu>() {
             #region Hardcoded Menus
             ["TopBar"] = new Menu() { Links = new Dictionary<string, string>() {
-                ["Dashboard"] = "/Dashboard", ["Courses"] = "/Course", ["Maker"] = "/Maker",
-                ["Temp Course Saver"] = "/Maker/TempCreate", ["College App Course"] = "/Course/10001",
-                ["Test"] = "/Dashboard/Test"
+                ["Home"] = "/Dashboard", ["Courses"] = "/Course", ["College App Course"] = "/Course/10001",
+                ["Web Dev Course"] = "/Course/13370"
             }}
             #endregion
         };

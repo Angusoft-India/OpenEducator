@@ -60,7 +60,7 @@ namespace OpenEducator.Code {
         /* JSON IGNORE */
         [JsonIgnore]
         public string YoutubeEmbedUrl => $@"http://www.youtube.com/embed/{YoutubeVideoID}?modestbranding=1";
-        
+
         public static JsonSerializerSettings DefaultSettings { get; set; } = new JsonSerializerSettings() {
             Formatting = Formatting.Indented,
             MissingMemberHandling = MissingMemberHandling.Ignore,
@@ -169,6 +169,48 @@ namespace OpenEducator.Code {
 
             return sb.ToString();
         }
+
+        public static Course Current => new Course() {
+
+            Name = "Introduction To Web Development",
+            Author = "Aryan Mann",
+            Description = "This is the description.",
+            ID = 13370,
+            Instructors = new List<Instructor>() {
+            new Instructor() {
+                Name = "Aryan Mann",
+                ID = 1337
+            }
+        },
+            Contents = new List<Content>() {
+            new TextContent(@"Web development is the coding or programming that enables website functionality, per the owner's requirements. It mainly deals with the non-design aspect of building websites, which includes coding and writing markup.
+                              Web development ranges from creating plain text pages to complex Web-based applications, social network applications and electronic business applications.
+                              The Web development hierarchy is as follows:-"),
+            new ListContent(new List<Content>() {
+                new RawHtmlContent("Client-side coding"),
+                new RawHtmlContent("Server-side coding"),
+                new RawHtmlContent("Database technology")
+            }, true)
+        },
+            Chapters = new List<Chapter>() {
+                new Chapter() {
+                    Name = "How the web functions",
+                    Description = "Functioning of the web",
+                    Contents = new List<Content>() {
+                        new TextContent(@"Essentially, the web is just a bunch of interconnected computers. When you visit a website, you are requesting data from another computer who sends the requested data back to your computer through huge cables that can also run under sea. We can call this relationship the 'Client-Server' relationship."),
+                        new TextContent(@"The client requests data and the server fulfills that request."),
+                        new TextContent("What are webpages?", TextContent.TextType.H1),
+                        new TextContent(@"Webpages are essentially a combination of these three elements:- "),
+                        new ListContent(new List<Content>(){
+                            new RawHtmlContent(@"<strong>HTML</strong> - HyperText Markup Language - In essence, it is a way to structure and display data. When you visit a website, it sends you data in a format that your browser can understand and present for you."),
+                            new RawHtmlContent(@"<strong>CSS</strong> - Cascading Stylesheets - Through CSS, we can control how items on our webpage look; their color, size, animation, etc."),
+                            new RawHtmlContent(@"<strong>Javascript</strong> - It is a programming language and thus allows us to control what happens to and through those HTML elements.")
+                        })
+                    }
+                }
+            }
+
+        };
 
     }
 }

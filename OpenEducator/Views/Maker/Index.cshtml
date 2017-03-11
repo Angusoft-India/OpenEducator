@@ -1,10 +1,17 @@
-﻿@{
+﻿@using OpenEducator.Code
+@{
     ViewBag.Title = "Creator";
+    Course crs = Course.Current;
 }
-<script>
-    $(function() {
 
-        
 
-    });
-</script>
+<div class="row margin-top s-nomargin">
+    <div class="medium-10 medium-offset-1 small-12 double-padded" style="background-color: white;">
+        @Html.React("Course", new {
+            Data = crs.JsonString()
+        })
+    </div>
+</div>
+
+<script src="~/Scripts/Components/Course.jsx"></script>
+@Html.ReactInitJavaScript()

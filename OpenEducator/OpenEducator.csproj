@@ -261,6 +261,7 @@
     <Content Include="Content\foundation.css" />
     <Content Include="Content\foundation.min.css" />
     <Content Include="Content\site.css" />
+    <Content Include="Scripts\Components\Course.jsx" />
     <Content Include="Scripts\Components\DataBind.jsx" />
     <Content Include="Scripts\foundation.js" />
     <Content Include="Scripts\foundation.min.js" />
